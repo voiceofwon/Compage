@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Style CSS -->
+</head>
+<body class="text-center d-flex">
+<main class="form-signin w-100 m-auto">
+    <form method="post" action ="/member/action">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+        <div class="form-floating">
+            <input id="floatingInput" type="text" class="form-control" name="username">
+            <label for="floatingInput">ID</label>
+        </div>
+        <div class="form-floating">
+            <input id="floatingPassword" type="password" class="form-control" name="password" autocomplete="off">
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <div class="checkbox mb-3">
+            <input id="rememberId" type="checkbox"/>
+            <label for="rememberId">아이디 저장</label>
+        </div>
+        <button type="submit" class="w-100 btn btn-lg btn-primary">로그인</button>
+    </form>
+    <div>
+        <a th:href="@{/signup}">
+            <button type="button" class="w-100 mt-1 btn btn-lg btn-secondary">회원가입</button>
+        </a>
+        <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+    </div>
+    <a th:href="@{'/Sos'}">
+        <span th:text="게시판"></span>
+    </a>
+</main>
+
+</body>
+</html>
