@@ -40,7 +40,7 @@ public class FileService {
 
         String savedName = uuid + extension;
 
-        String savedPath = uuid+savedName;
+        String savedPath = fileDir+savedName;
 
         File file = File.builder()
                 .orgNm(origName)

@@ -37,8 +37,8 @@ public class NoticePost {
     @LastModifiedDate
     private LocalDateTime modifiedDate;
 
-    @OneToOne(cascade = CascadeType.ALL,optional = false)
-    @JoinColumn(name="id")
+    @OneToOne(mappedBy = "noticePost", cascade = CascadeType.ALL,optional = false)
+    @PrimaryKeyJoinColumn
     private NoticeFile noticeFile;
 
     @Builder

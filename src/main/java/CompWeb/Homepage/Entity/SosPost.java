@@ -18,6 +18,7 @@ public class SosPost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="id")
     private Long id;
 
     @Column(length = 25, nullable = false)
@@ -35,8 +36,8 @@ public class SosPost {
     @LastModifiedDate
     private LocalDateTime modifiedDate;
 
-    @OneToOne(cascade = CascadeType.ALL,optional = false)
-    @JoinColumn(name="id")
+    @OneToOne(mappedBy ="sosPost", cascade = CascadeType.ALL,optional = false)
+    @PrimaryKeyJoinColumn
     private File file;
 
     @Builder

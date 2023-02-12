@@ -26,21 +26,28 @@ public class SosPostService {
     @Transactional
     public Long savePost(SosPostDTO sosPostDTO) throws IOException {
 
-        File file = null;
+
         SosPost sosPost = sosPostDTO.toEntity();
-        if(sosPostDTO.getMultipartFile().getSize() >0){
-            file = fileService.toFileEntity(sosPostDTO.getMultipartFile());
-        }
 
-        if(file != null){
-            file = fileService.saveFile(sosPostDTO.getMultipartFile());
+
+
+        File file = fileService.saveFile(sosPostDTO.getMultipartFile());
+        if(file != null) {
             sosPost.setFile(file);
-
             file.setSosPost(sosPost);
-            System.out.println(sosPostDTO.getMultipartFile());
-            System.out.println(file);
+        }else{
+            file = File.builder()
+                    .savedPath("null")
+                    .savedNm("null")
+                    .orgNm("첨부된 파일이 없습니다.")
+                    .build();
+
+            sosPost.setFile(file);
+            file.setSosPost(sosPost);
 
         }
+
+
 
         sosPostRepository.save(sosPost);
 

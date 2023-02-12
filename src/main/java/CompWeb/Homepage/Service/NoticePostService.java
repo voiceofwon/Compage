@@ -30,10 +30,23 @@ public class NoticePostService {
     public Long savePost(NoticePostDTO noticePostDTO) throws IOException {
 
         NoticePost noticePost = noticePostDTO.toEntity();
-        NoticeFile file = noticeFileService.toFileEntity(noticePostDTO.getMultipartFile());
-        noticePost.setNoticeFile(file);
-        file.setNoticePost(noticePost);
-        noticeFileService.saveFile(noticePostDTO.getMultipartFile());
+
+        NoticeFile file = noticeFileService.saveFile(noticePostDTO.getMultipartFile());
+        if(file != null){
+            noticePost.setNoticeFile(file);
+            file.setNoticePost(noticePost);
+        }else{
+            file = NoticeFile.builder()
+                    .savedNm("null")
+                    .savedPath("null")
+                    .orgNm("첨부된 파일이 없습니다.")
+                    .build();
+            noticePost.setNoticeFile(file);
+            file.setNoticePost(noticePost);
+
+        }
+
+
 
         noticePostRepository.save(noticePost);
 

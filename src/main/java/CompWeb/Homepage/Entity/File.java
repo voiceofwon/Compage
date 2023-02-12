@@ -13,12 +13,15 @@ import lombok.*;
 public class File {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="sosPost_id")
     private Long id;
 
     private String orgNm;
     private String savedNm;
     private String savedPath;
 
-    @OneToOne(mappedBy = "file",optional = false)
+    @OneToOne(optional = false)
+    @MapsId
+    @JoinColumn(name ="sosPost_id")
     private SosPost sosPost;
 }

@@ -41,7 +41,7 @@ public class NoticeFileService {
 
         String savedName = uuid + extension;
 
-        String savedPath = uuid+savedName;
+        String savedPath = fileDir+savedName;
 
         NoticeFile file = NoticeFile.builder()
                 .orgNm(origName)
@@ -52,8 +52,8 @@ public class NoticeFileService {
         return file;
     }
 
-    public Long saveFile(MultipartFile files) throws IOException{
-        if(files.isEmpty()){
+    public NoticeFile saveFile(MultipartFile files) throws IOException{
+        if(!(files.getSize()>0)){
             return null;
         }
 
@@ -75,9 +75,9 @@ public class NoticeFileService {
 
         files.transferTo(new java.io.File(savedPath));
 
-        NoticeFile savedFile = noticefileRepository.save(file);
+/*        NoticeFile savedFile = noticefileRepository.save(file);*/
 
-        return savedFile.getId();
+        return file;
     }
 
     @Transactional
