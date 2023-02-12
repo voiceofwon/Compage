@@ -1,7 +1,9 @@
 package CompWeb.Homepage.Service;
 
 import CompWeb.Homepage.Entity.File;
+import CompWeb.Homepage.Entity.NoticeFile;
 import CompWeb.Homepage.Repository.FileRepository;
+import CompWeb.Homepage.Repository.NoticeFileRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -18,16 +20,15 @@ import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
-@RequiredArgsConstructor
 @Service
-public class FileService {
-
+@RequiredArgsConstructor
+public class NoticeFileService {
     @Value("${file.dir}")
     private String fileDir;
 
-    private final FileRepository fileRepository;
+    private final NoticeFileRepository noticefileRepository;
 
-    public File toFileEntity(MultipartFile files) throws IOException{
+    public NoticeFile toFileEntity(MultipartFile files) throws IOException {
         if(files.isEmpty()){
             return null;
         }
@@ -42,7 +43,7 @@ public class FileService {
 
         String savedPath = uuid+savedName;
 
-        File file = File.builder()
+        NoticeFile file = NoticeFile.builder()
                 .orgNm(origName)
                 .savedNm(savedName)
                 .savedPath(savedPath)
@@ -51,10 +52,11 @@ public class FileService {
         return file;
     }
 
-    public File saveFile(MultipartFile files) throws IOException{
-        if(!(files.getSize()>0)){
+    public Long saveFile(MultipartFile files) throws IOException{
+        if(files.isEmpty()){
             return null;
         }
+
         String origName = files.getOriginalFilename();
 
         String uuid = UUID.randomUUID().toString();
@@ -65,8 +67,7 @@ public class FileService {
 
         String savedPath = fileDir+savedName;
 
-
-        File file = File.builder()
+        NoticeFile file = NoticeFile.builder()
                 .orgNm(origName)
                 .savedNm(savedName)
                 .savedPath(savedPath)
@@ -74,14 +75,14 @@ public class FileService {
 
         files.transferTo(new java.io.File(savedPath));
 
-/*        File savedFile = fileRepository.save(file);*/
+        NoticeFile savedFile = noticefileRepository.save(file);
 
-        return file;
+        return savedFile.getId();
     }
 
     @Transactional
     public ResponseEntity<Resource> downloadAttach(Long id) throws MalformedURLException {
-        File file = fileRepository.findById(id).orElse(null);
+        NoticeFile file = noticefileRepository.findById(id).orElse(null);
 
         UrlResource resource = new UrlResource("file:"+file.getSavedPath());
 
@@ -91,6 +92,5 @@ public class FileService {
 
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,contentDisposition).body(resource);
     }
-
 
 }

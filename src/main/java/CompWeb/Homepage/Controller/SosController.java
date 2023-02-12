@@ -88,7 +88,7 @@ public class SosController {
 
     }
 
-    @GetMapping
+    @GetMapping("/post/edit")
     public String editPage(){
         return "Sos/post.html";
     }

@@ -5,6 +5,22 @@
     <title>Title</title>
 </head>
 <body>
-
+<h1>메인 화면입니다.</h1>
+<br>
+<a th:href="@{'/member/login'}">
+    <span th:text="로그인"></span>
+</a>
+<a th:href="@{'/activity'}">
+    <span th:text="활동내역"></span>
+</a>
+<a th:href="@{'/Sos'}">
+    <span th:text="학습게시판"></span>
+</a>
+<a th:href="@{'/notice'}">
+    <span th:text="공지사항"></span>
+</a>
+<a th:href="@{'/logout'}">
+    <span th:text="로그아웃"></span>
+</a>
 </body>
 </html>

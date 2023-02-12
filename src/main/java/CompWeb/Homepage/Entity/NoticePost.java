@@ -1,8 +1,11 @@
 package CompWeb.Homepage.Entity;
 
-import jakarta.annotation.Nullable;
+
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -12,9 +15,8 @@ import java.time.LocalDateTime;
 @Entity
 @Getter@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class SosPost {
+public class NoticePost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,10 +39,10 @@ public class SosPost {
 
     @OneToOne(cascade = CascadeType.ALL,optional = false)
     @JoinColumn(name="id")
-    private File file;
+    private NoticeFile noticeFile;
 
     @Builder
-    public SosPost(Long id, String author, String title, String content){
+    public NoticePost(Long id, String author, String title, String content){
         this.id=id;
         this.author=author;
         this.title=title;

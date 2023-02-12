@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -43,15 +44,15 @@ public class SecurityConfig {
     public AuthenticationFailureHandler failureHandler(){
         return new CustomLoginFailureHandler();
     }
-    /*@Bean
+    @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/");
-    }*/
+        return (web) -> web.ignoring().requestMatchers("/home");
+    }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.csrf().disable();
         http.authorizeHttpRequests()
-                .anyRequest().authenticated();
+                        .anyRequest().authenticated();
         http.formLogin()
                 .loginPage("/member/login").permitAll()
                 .loginProcessingUrl("/member/action")
@@ -62,9 +63,9 @@ public class SecurityConfig {
                 .invalidateHttpSession(true)
                 .deleteCookies("SESSION","JSESSIONID");
         http.sessionManagement()
-                .invalidSessionUrl("/member/login?invalidSession")
+                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                 .sessionAuthenticationErrorUrl("/login?maximumSessions")
-                .maximumSessions(1)
+                .maximumSessions(-1)
                 .maxSessionsPreventsLogin(false)
                 .expiredUrl("/member/login?expiredSession");
         return http.build();

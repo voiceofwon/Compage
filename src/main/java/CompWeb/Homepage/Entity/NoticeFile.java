@@ -1,6 +1,5 @@
 package CompWeb.Homepage.Entity;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,9 +7,10 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Getter@Setter
-@Table(name = "file")
-public class File {
+@Getter
+@Setter
+@Table(name = "noticeFile")
+public class NoticeFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,6 +19,6 @@ public class File {
     private String savedNm;
     private String savedPath;
 
-    @OneToOne(mappedBy = "file",optional = false)
-    private SosPost sosPost;
+    @OneToOne(mappedBy = "noticeFile",optional = false)
+    private NoticePost noticePost;
 }

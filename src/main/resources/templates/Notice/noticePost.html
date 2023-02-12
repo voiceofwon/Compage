@@ -5,9 +5,9 @@
     <title>게시판 - 글쓰기</title>
 </head>
 <body>
-<header th:insert="/Sos/header.html"></header>
+<header th:insert="/Notice/noticeHeader.html"></header>
 <div class="container">
-    <form action="/Sos/post" method="post" enctype="multipart/form-data">
+    <form action="/notice/noticePost" method="post" enctype="multipart/form-data">
         <div class="form-group row">
             <label for="inputTitle" class="col-sm-2 col-form-label"><strong>제목</strong></label>
             <div class="col-sm-10">
@@ -21,8 +21,10 @@
             </div>
         </div>
         <div class ="form group row">
-                <strong>파일 업로드</strong>
-                <input type="file" name ="multipartFile">
+            <strong>파일 업로드</strong>
+            <input type="file" name ="multipartFile">
+
+
 
         </div>
         <div class="form-group row">
