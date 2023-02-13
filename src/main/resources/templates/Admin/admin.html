@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 페이지</title>
+</head>
+<body>
+<a th:href="@{'/home'}">
+    <span th:text="꼼페이지"></span>
+</a>
+<br>
+<a th:href="@{'/admin'}">
+    <span th:text="관리자페이지"></span>
+</a>
+<br>
+<h1>관리자 페이지입니다.</h1>
+<a th:href="@{'/admin/joinMember'}">
+    <span th:text="일반회원_회원가입 "></span>
+</a>
+<br>
+<a th:href="@{'/admin/joinAdmin'}">
+    <span th:text="관리자_회원가입 "></span>
+</a>
+<br>
+<a th:href="@{'/admin/memberList'}">
+    <span th:text="회원목록 "></span>
+</a>
+</body>
+</html>

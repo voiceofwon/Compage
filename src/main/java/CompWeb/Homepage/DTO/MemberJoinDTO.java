@@ -11,6 +11,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 public class MemberJoinDTO {
+    private String name;
     private String username;
     private String password;
     private int grade;

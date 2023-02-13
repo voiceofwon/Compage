@@ -1,5 +1,6 @@
 package CompWeb.Homepage;
 
+import CompWeb.Homepage.DTO.AdminJoinDTO;
 import CompWeb.Homepage.DTO.MemberJoinDTO;
 import CompWeb.Homepage.Repository.MemberRepository;
 import CompWeb.Homepage.Service.MemberService;
@@ -29,12 +30,13 @@ class HomepageApplicationTests {
 	@Test
 	@Rollback(value = false)
 	void contextLoads() {
-		MemberJoinDTO memberJoinDTO = MemberJoinDTO.builder()
+		AdminJoinDTO adminJoinDTO = AdminJoinDTO.builder()
+				.name("김원중")
 				.username("202126978")
 				.password("202126978")
 				.grade(3)
 				.build();
-		memberService.joinMember(memberJoinDTO);
+		memberService.joinAdmin(adminJoinDTO);
 
 		Assertions.assertEquals(memberService.findByUsername("202126978").get().getRoles().stream().toList(), List.of("USER"));
 

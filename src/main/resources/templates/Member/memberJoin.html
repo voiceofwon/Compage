@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>꼼_회원가입</title>
+</head>
+<body>
+<body class="text-center d-flex">
+<main class="form-signin w-100 m-auto">
+    <form method="post" action ="/admin/joinMember">
+        <h1 class="h3 mb-3 fw-normal">꼼 회원가입</h1>
+        <div class="form-floating">
+            <input id="floatingName" type="text" class="form-control" name="name">
+            <label for="floatingInput">이름</label>
+        </div>
+        <div class="form-floating">
+            <input id="floatingInput" type="text" class="form-control" name="username">
+            <label for="floatingInput">학번</label>
+        </div>
+        <div class="form-floating">
+            <input id="floatingPassword" type="password" class="form-control" name="password" autocomplete="off">
+            <label for="floatingPassword">Password</label>
+        </div>
+        <div class="form-floating">
+            <input id="floatingGrade" type="grade" class="form-control" name="grade" autocomplete="off">
+            <label for="floatingPassword">학년</label>
+        </div>
+        <button type="submit" class="w-100 btn btn-lg btn-primary">회원가입</button>
+    </form>
+
+</main>
+
+</body>
+</html>

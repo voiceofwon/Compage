@@ -28,6 +28,9 @@ public class Member implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
+    private String name;
+
     @Column(updatable = false, unique = true, nullable = false)
     private String username;
 

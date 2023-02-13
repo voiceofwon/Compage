@@ -1,6 +1,7 @@
 package CompWeb.Homepage.Service;
 
 import CompWeb.Homepage.DTO.AdminJoinDTO;
+import CompWeb.Homepage.DTO.GetMemberDTO;
 import CompWeb.Homepage.DTO.MemberJoinDTO;
 import CompWeb.Homepage.DTO.MemberModifyDTO;
 import CompWeb.Homepage.Entity.Member;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -70,11 +72,12 @@ public class MemberService implements UserDetailsService {
     }
 
     @Transactional
-    public Long joinMember(MemberJoinDTO memberLoginDTO){
+    public Long joinMember(MemberJoinDTO memberJoinDTO){
         Member member = Member.builder()
-                .username(memberLoginDTO.getUsername())
-                .password(passwordEncoder.encode(memberLoginDTO.getPassword()))
-                .grade(memberLoginDTO.getGrade())
+                .name(memberJoinDTO.getName())
+                .username(memberJoinDTO.getUsername())
+                .password(passwordEncoder.encode(memberJoinDTO.getPassword()))
+                .grade(memberJoinDTO.getGrade())
                 .createDate(LocalDateTime.now())
                 .modifiedDate(LocalDateTime.now())
                 .roles(List.of("USER"))
@@ -87,6 +90,7 @@ public class MemberService implements UserDetailsService {
     @Transactional
     public Long joinAdmin(AdminJoinDTO aminJoinDTO){
         Member member = Member.builder()
+                .name(aminJoinDTO.getName())
                 .username(aminJoinDTO.getUsername())
                 .password(passwordEncoder.encode(aminJoinDTO.getPassword()))
                 .grade(aminJoinDTO.getGrade())
@@ -113,6 +117,22 @@ public class MemberService implements UserDetailsService {
             throw new UsernameNotFoundException("["+memberModifyDTO.getUsername()+"] Not Found");
         }
 
+    }
+    @Transactional
+    public List<GetMemberDTO> getMemberList(){
+        List<Member> members = memberRepository.findAll();
+        List<GetMemberDTO> memberList = new ArrayList<>();
+        for(Member member : members){
+            GetMemberDTO getMemberDTO = GetMemberDTO.builder()
+                    .name(member.getName())
+                    .username(member.getUsername())
+                    .grade(member.getGrade())
+                    .role(member.getRoles().toString())
+                    .createdDate(member.getCreateDate())
+                    .build();
+            memberList.add(getMemberDTO);
+        }
+        return memberList;
     }
 
     @Transactional

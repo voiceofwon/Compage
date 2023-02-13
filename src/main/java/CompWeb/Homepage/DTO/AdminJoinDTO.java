@@ -8,6 +8,7 @@ import lombok.Data;
 @Builder
 @AllArgsConstructor
 public class AdminJoinDTO {
+    private String name;
     private String username;
     private String password;
     private int grade;

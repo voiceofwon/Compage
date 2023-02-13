@@ -2,25 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>꼼 홈페이지에 오신걸 환영합니다!</title>
 </head>
 <body>
+<a th:href="@{'/home'}">
+    <span th:text="꼼페이지"></span>
+</a>
+<br>
 <h1>메인 화면입니다.</h1>
 <br>
 <a th:href="@{'/member/login'}">
-    <span th:text="로그인"></span>
+    <span th:text="로그인 "></span>
 </a>
-<a th:href="@{'/activity'}">
-    <span th:text="활동내역"></span>
-</a>
-<a th:href="@{'/Sos'}">
-    <span th:text="학습게시판"></span>
-</a>
+<br>
 <a th:href="@{'/notice'}">
     <span th:text="공지사항"></span>
 </a>
+<br>
+<a th:href="@{'/activity'}">
+    <span th:text="활동내역 "></span>
+</a>
+<br>
+<a th:href="@{'/Sos'}">
+    <span th:text="학습게시판 "></span>
+</a>
+<br>
+<a th:href="@{'/admin'}">
+    <span th:text="관리자페이지"></span>
+</a>
+<br>
 <a th:href="@{'/logout'}">
     <span th:text="로그아웃"></span>
 </a>
+<footer>
+    2023 꼼 홈페이지 회장 고준환, 세미나 담당자 김원중
+</footer>
 </body>
 </html>
