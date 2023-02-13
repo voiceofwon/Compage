@@ -21,6 +21,7 @@
             <th scope="col">학번</th>
             <th scope="col">학년</th>
             <th scope="col">권한</th>
+            <th scope="col">전화번호</th>
             <th scope="col">가입일</th>
         </tr>
         </thead>
@@ -37,6 +38,9 @@
             </td>
             <td>
                 <span th:text="${member.role}"></span>
+            </td>
+            <td>
+                <span th:text="${member.phoneNum}"></span>
             </td>
             <td>
                 <span th:text="${#temporals.format(member.createdDate, 'yyyy-MM-dd HH:mm')}"></span>

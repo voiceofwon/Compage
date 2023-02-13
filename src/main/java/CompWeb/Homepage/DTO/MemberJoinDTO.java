@@ -14,5 +14,6 @@ public class MemberJoinDTO {
     private String name;
     private String username;
     private String password;
-    private int grade;
+    private String grade;
+    private String phoneNum;
 }

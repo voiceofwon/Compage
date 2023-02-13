@@ -34,7 +34,8 @@ class HomepageApplicationTests {
 				.name("김원중")
 				.username("202126978")
 				.password("202126978")
-				.grade(3)
+				.grade("3")
+				.phoneNum("01063016963")
 				.build();
 		memberService.joinAdmin(adminJoinDTO);
 
@@ -48,7 +49,8 @@ class HomepageApplicationTests {
 		MemberJoinDTO memberJoinDTO = MemberJoinDTO.builder()
 				.username("202126978")
 				.password("202126978")
-				.grade(3)
+				.grade("3")
+				.phoneNum("01063016963")
 				.build();
 
 		Long id = memberService.joinMember(memberJoinDTO);

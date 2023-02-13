@@ -1,19 +1,19 @@
 package CompWeb.Homepage.DTO;
 
 import CompWeb.Homepage.Entity.ActivityFile;
-import CompWeb.Homepage.Entity.File;
+import CompWeb.Homepage.Entity.ActivityPost;
 import CompWeb.Homepage.Entity.NoticeFile;
 import CompWeb.Homepage.Entity.SosPost;
 import lombok.*;
 
 import java.time.LocalDateTime;
 
+
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class GetNoticePostDTO {
-
+public class GetActivityPostDTO {
     private Long id;
     private String author;
     private String title;
@@ -21,10 +21,10 @@ public class GetNoticePostDTO {
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 
-    private NoticeFile file;
+    private ActivityFile file;
 
-    public SosPost toEntity(){
-        SosPost build = SosPost.builder()
+    public ActivityPost toEntity(){
+        ActivityPost build = ActivityPost.builder()
                 .id(id)
                 .author(author)
                 .title(title)
@@ -34,7 +34,7 @@ public class GetNoticePostDTO {
     }
 
     @Builder
-    public GetNoticePostDTO(Long id, String author, String title, String content, LocalDateTime createdDate, LocalDateTime modifiedDate, NoticeFile file) {
+    public GetActivityPostDTO(Long id, String author, String title, String content, LocalDateTime createdDate, LocalDateTime modifiedDate, ActivityFile file) {
         this.id = id;
         this.author = author;
         this.title = title;

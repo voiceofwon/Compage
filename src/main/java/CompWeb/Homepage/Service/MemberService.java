@@ -78,6 +78,7 @@ public class MemberService implements UserDetailsService {
                 .username(memberJoinDTO.getUsername())
                 .password(passwordEncoder.encode(memberJoinDTO.getPassword()))
                 .grade(memberJoinDTO.getGrade())
+                .phoneNum(memberJoinDTO.getPhoneNum())
                 .createDate(LocalDateTime.now())
                 .modifiedDate(LocalDateTime.now())
                 .roles(List.of("USER"))
@@ -94,6 +95,7 @@ public class MemberService implements UserDetailsService {
                 .username(aminJoinDTO.getUsername())
                 .password(passwordEncoder.encode(aminJoinDTO.getPassword()))
                 .grade(aminJoinDTO.getGrade())
+                .phoneNum(aminJoinDTO.getPhoneNum())
                 .createDate(LocalDateTime.now())
                 .modifiedDate(LocalDateTime.now())
                 .roles(List.of("ADMIN"))
@@ -127,6 +129,7 @@ public class MemberService implements UserDetailsService {
                     .name(member.getName())
                     .username(member.getUsername())
                     .grade(member.getGrade())
+                    .phoneNum(member.getPhoneNum())
                     .role(member.getRoles().toString())
                     .createdDate(member.getCreateDate())
                     .build();

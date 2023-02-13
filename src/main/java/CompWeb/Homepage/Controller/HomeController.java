@@ -11,6 +11,4 @@ public class HomeController {
         return "Main.html";
     }
 
-    @GetMapping("/activity")
-    public String activity(){return "activity.html";}
 }

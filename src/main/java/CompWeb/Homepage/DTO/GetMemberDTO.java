@@ -13,8 +13,9 @@ import java.time.LocalDateTime;
 public class GetMemberDTO {
     private String name;
     private String username;
-    private int grade;
+    private String grade;
     private String role;
+    private String phoneNum;
     private LocalDateTime createdDate;
 
 }

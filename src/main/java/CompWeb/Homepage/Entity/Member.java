@@ -38,7 +38,10 @@ public class Member implements UserDetails {
     private String password;
 
     @Column
-    private int grade;
+    private String grade;
+
+    @Column
+    private String phoneNum;
 
     @CreatedDate
     private LocalDateTime createDate;

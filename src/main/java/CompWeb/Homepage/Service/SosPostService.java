@@ -19,8 +19,6 @@ import java.util.List;
 public class SosPostService {
     private final SosPostRepository sosPostRepository;
 
-    private final FileRepository fileRepository;
-
     private final FileService fileService;
 
     @Transactional

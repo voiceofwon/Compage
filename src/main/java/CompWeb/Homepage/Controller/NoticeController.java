@@ -89,7 +89,7 @@ public class NoticeController {
 
     }
 
-    @GetMapping("/notcePost/edit")
+    @GetMapping("/noticePost/edit")
     public String editPage(){
         return "Notice/noticePost.html";
     }
