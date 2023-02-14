@@ -31,7 +31,7 @@ public class MemberService implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public Member loadUserByUsername(String username) throws UsernameNotFoundException {
         return memberRepository.findByUsername(username)
                 .orElseThrow(()->new UsernameNotFoundException("["+username+"] Not Found"));
     }
@@ -45,19 +45,7 @@ public class MemberService implements UserDetailsService {
         return memberRepository.save(member);
     }
 
-    public Member authenticate(String username, String password){
-        Optional<Member> optionalMember = memberRepository.findByUsername(username);
-        if(optionalMember.isPresent()){
-            log.info("@Authenticate : PW 확인");
-            Member member = optionalMember.get();
-            if(!passwordEncoder.matches(password,member.getPassword())){
-                throw new BadCredentialsException("비밀번호가 틀렸습니다.");
-            }
-        } else{
-            throw new UsernameNotFoundException("User Not Found");
-        }
-        return optionalMember.get();
-    }
+
 
     public void updateLoginInfo(Member member){
         log.info("@LoginSuccess : 로그인 정보 업데이트");

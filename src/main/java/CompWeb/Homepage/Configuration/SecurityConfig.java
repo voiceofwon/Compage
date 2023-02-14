@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -28,44 +29,41 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Slf4j
 public class SecurityConfig {
 
+    private final CustomLoginFailureHandler customLoginFailureHandler;
+    private final CustomLoginSuccessHandler customLoginSuccessHandler;
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public SimpleUrlAuthenticationSuccessHandler successHandler(){
-        SimpleUrlAuthenticationSuccessHandler successHandler = new CustomLoginSuccessHandler();
-        successHandler.setDefaultTargetUrl("/");
-        return successHandler;
-    }
-
-    @Bean
-    public AuthenticationFailureHandler failureHandler(){
-        return new CustomLoginFailureHandler();
-    }
-    @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/home");
+        return (web) -> web.ignoring().requestMatchers("/home")
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.csrf().disable();
+        http.requestCache().disable();
         http.authorizeHttpRequests()
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                .requestMatchers("/member/**").permitAll()
                         .anyRequest().authenticated();
         http.formLogin()
-                .loginPage("/member/login").permitAll()
+                .loginPage("/member/login")
                 .loginProcessingUrl("/member/action")
+                .failureHandler(customLoginFailureHandler)
                 .defaultSuccessUrl("/home");
+
         http.logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/member/login")
-                .invalidateHttpSession(true)
-                .deleteCookies("SESSION","JSESSIONID");
+                .invalidateHttpSession(false)
+                .deleteCookies("JSESSIONID");
         http.sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 .sessionAuthenticationErrorUrl("/login?maximumSessions")
-                .maximumSessions(-1)
+                .maximumSessions(1)
                 .maxSessionsPreventsLogin(false)
                 .expiredUrl("/member/login?expiredSession");
         return http.build();

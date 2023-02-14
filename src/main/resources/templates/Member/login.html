@@ -4,16 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
+    <link href="/css/sosList.css" rel="stylesheet" type="text/css">
     <!-- Style CSS -->
 </head>
-<body class="text-center d-flex">
+<body>
+<header>
+    <div class ="head_left">
+        <a th:href ="@{'/home'}"><img class="image1" src="/images/complogo.png"></a>
+        <span class="page"><br><br><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공지사항</strong></span>
+    </div>
+    <div class = "head_right">
+        <a th:href="@{'/intro'}" class ="head_span"><br>소학회 소개</a>
+        <a th:href="@{'/notice'}" class ="head_span"><br>공지사항</a>
+        <a th:href="@{'/activity'}" class ="head_span"><br>활동 내역</a>
+        <a th:href="@{'/Sos'}" class ="head_span"><br>학습 자료 게시판</a>
+        <a th:href="@{'/member/login'}" class ="head_span"><br>로그인</a>
+        <a th:href="@{'/logout'}" class="head_span"><br>로그아웃</a>
+    </div>
+</header>
 <a th:href="@{'/home'}">
     <span th:text="꼼페이지"></span>
 </a>
 <main class="form-signin w-100 m-auto">
     <form method="post" action ="/member/action">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
 
         <div class="form-floating">
             <input id="floatingInput" type="text" class="form-control" name="username">
@@ -30,15 +45,15 @@
         </div>
         <button type="submit" class="w-100 btn btn-lg btn-primary">로그인</button>
     </form>
+    <div th:if="${param.error}"  class="alert alert-danger" role="alert">
+        <span th:text="${exception}"></span>
+    </div>
     <div>
         <a th:href="@{/signup}">
             <button type="button" class="w-100 mt-1 btn btn-lg btn-secondary">회원가입</button>
         </a>
-        <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+        <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
     </div>
-    <a th:href="@{'/Sos'}">
-        <span th:text="게시판"></span>
-    </a>
 </main>
 
 </body>

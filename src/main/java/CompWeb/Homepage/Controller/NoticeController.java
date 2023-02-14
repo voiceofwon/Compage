@@ -44,7 +44,7 @@ public class NoticeController {
         List<NoticePostDTO> noticePostDTOList = noticePostService.getPostList();
         model.addAttribute("postList",noticePostDTOList);
 
-        return "Notice/noticeList.html";
+        return "Notice/notice.html";
     }
 
     @GetMapping("/noticePost")

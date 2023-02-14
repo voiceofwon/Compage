@@ -8,9 +8,11 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -20,6 +22,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider, Mes
     private MessageSourceAccessor messages;
 
     private final MemberService memberService;
+
+    private final PasswordEncoder passwordEncoder;
     @Override
     public void setMessageSource(MessageSource messageSource) {
         this.messages = new MessageSourceAccessor(messageSource);
@@ -27,12 +31,15 @@ public class CustomAuthenticationProvider implements AuthenticationProvider, Mes
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String username = (String) authentication.getPrincipal();
+        String username = authentication.getName();
         String password = (String) authentication.getCredentials();
 
         //비밀번호 확인
-        Member userDetails = memberService.authenticate(username,password);
+        Member user = memberService.loadUserByUsername(username);
 
+        if (!this.passwordEncoder.matches(password, user.getPassword())) {
+            throw new BadCredentialsException("password is not matched");
+        }
         return new UsernamePasswordAuthenticationToken(username,password, authentication.getAuthorities());
     }
 

@@ -8,7 +8,10 @@ public class HomeController {
 
     @GetMapping("/home")
     public String home(){
-        return "Main.html";
+        return "test.html";
     }
+
+    @GetMapping("/intro")
+    public String intro(){return "introduction.html";}
 
 }

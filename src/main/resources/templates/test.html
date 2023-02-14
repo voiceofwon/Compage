@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>꼼 활동내역</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/main.css" rel="stylesheet" type="text/css">
 </head>
-<body>
-<header>
+<body margin="0">
+    <header>
     <div class ="head_left">
         <a th:href ="@{'/home'}"><img class="image1" src="/images/complogo.png"></img></a>
         <span class="page"><br><br><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공지사항</strong></span>
@@ -18,7 +21,11 @@
         <a th:href="@{'/member/login'}" class ="head_span"><br>로그인</a>
         <a th:href="@{'/logout'}" class="head_span"><br>로그아웃</a>
     </div>
-</header>
-<h1>활동내역 페이지 입니다.</h1>
+    </header>
+
+      <div class="Background_Container">
+        <img class="image1" src="/images/mainbackground.png"></img>
+      </div>   
+    
 </body>
 </html>
