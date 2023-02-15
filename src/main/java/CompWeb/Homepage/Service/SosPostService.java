@@ -7,11 +7,13 @@ import CompWeb.Homepage.Entity.SosPost;
 import CompWeb.Homepage.Repository.FileRepository;
 import CompWeb.Homepage.Repository.SosPostRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -69,6 +71,7 @@ public class SosPostService {
             postDtoList.add(sosPostDTO);
 
         }
+        Collections.reverse(postDtoList);
         return postDtoList;
     }
 
@@ -97,11 +100,28 @@ public class SosPostService {
     }
 
     @Transactional
-    public Long editPost(Long id, SosPostDTO sosPostDTO){
-        SosPost savedPost = sosPostRepository.findById(id).orElse(null);
+    public Long editPost(Long id, SosPostDTO sosPostDTO) throws IOException{
+        SosPost savedPost = sosPostRepository.findById(id)
+                .orElseThrow(()->new IOException("["+sosPostDTO.getTitle()+"] Not Found"));
         savedPost.setTitle(sosPostDTO.getTitle());
         savedPost.setAuthor(sosPostDTO.getAuthor());
         savedPost.setContent(sosPostDTO.getContent());
+
+        /*File file = fileService.saveFile(sosPostDTO.getMultipartFile());
+        if(file != null) {
+            savedPost.setFile(file);
+            file.setSosPost(savedPost);
+        }else{
+            file = File.builder()
+                    .savedPath("null")
+                    .savedNm("null")
+                    .orgNm("첨부된 파일이 없습니다.")
+                    .build();
+
+            savedPost.setFile(file);
+            file.setSosPost(savedPost);
+
+        }*/
 
         sosPostRepository.save(savedPost);
 

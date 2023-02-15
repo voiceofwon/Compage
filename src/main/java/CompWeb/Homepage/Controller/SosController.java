@@ -88,9 +88,11 @@ public class SosController {
 
     }
 
-    @GetMapping("/post/edit")
-    public String editPage(){
-        return "Sos/post.html";
+    @GetMapping("/post/edit/{id}")
+    public String editPage(@PathVariable Long id, Model model){
+        GetPostDTO post = sosPostService.getPost(id);
+        model.addAttribute("post",post);
+        return "Sos/edit.html";
     }
 
     @PostMapping("/post/edit/{id}")

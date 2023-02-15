@@ -36,7 +36,7 @@ public class SosPost {
     @LastModifiedDate
     private LocalDateTime modifiedDate;
 
-    @OneToOne(mappedBy ="sosPost", cascade = CascadeType.ALL,optional = false)
+    @OneToOne(mappedBy ="sosPost",optional = false,fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private File file;
 

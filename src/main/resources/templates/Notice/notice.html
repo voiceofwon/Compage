@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="/css/noticeList.css" rel="stylesheet" type="text/css">
+    <link href="/css/noticeList.css?35" rel="stylesheet" type="text/css">
 </head>
 <body>
     <header>
@@ -23,6 +23,7 @@
         </div>
       </header>
       <div class="notice">
+
           <table class="table">
               <thead class="thead-light">
               <tr class="text-center">
@@ -39,7 +40,7 @@
                   </th>
                   <td>
                       <a th:href="@{'/notice/noticePost/' + ${post.id}}">
-                          <span th:text="${post.title}"></span>
+                          <span class ="post_name" th:text="${post.title}"></span>
                       </a>
                   </td>
                   <td>
@@ -51,12 +52,12 @@
               </tr>
               </tbody>
           </table>
-          <div class="row">
-              <div class="col-auto mr-auto"></div>
-              <div class="col-auto">
-                  <a class="btn btn-primary" th:href="@{/notice/noticePost}" role="button">글쓰기</a>
-              </div>
+
+
+          <div class="col-auto">
+              <a class="btn_primary" type="submit" th:href="@{/notice/noticePost}" role="button">글쓰기</a>
           </div>
+
       </div>
       </body>
       </html>

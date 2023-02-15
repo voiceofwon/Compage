@@ -2,12 +2,12 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>공지사항 - 글쓰기</title>
+    <title>게시판 - 수정</title>
 </head>
 <body>
-<header th:insert="/Notice/noticeHeader.html"></header>
+<header th:insert="/Sos/header.html"></header>
 <div class="container">
-    <form action="/notice/noticePost" method="post" enctype="multipart/form-data">
+    <form th:action="@{'/Sos/post/edit/' + ${post.id}}" method="post" enctype="multipart/form-data">
         <div class="form-group row">
             <label for="inputTitle" class="col-sm-2 col-form-label"><strong>제목</strong></label>
             <div class="col-sm-10">
@@ -24,8 +24,6 @@
             <strong>파일 업로드</strong>
             <input type="file" name ="multipartFile">
 
-
-
         </div>
         <div class="form-group row">
             <label for="inputContent" class="col-sm-2 col-form-label"><strong>내용</strong></label>
@@ -36,7 +34,7 @@
         <div class="row">
             <div class="col-auto mr-auto"></div>
             <div class="col-auto">
-                <input class="btn btn-primary" role="button" value="글쓰기" />
+                <input class="btn btn-primary" type="submit" role="button" value="수정" />
             </div>
         </div>
     </form>
