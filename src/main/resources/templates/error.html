@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>에러 페이지</title>
+    <link href="/css/introduction.css?3" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+    <div class ="head_left">
+        <a th:href="@{'/home'}"><img class="image1" src="/images/complogo.png"></a>
+        <span class="page"><br><br><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소학회 소개</strong></span>
+    </div>
+    <div class = "head_right">
+        <a th:href="@{'/intro'}" class ="head_span"><br>소학회 소개</a>
+        <a th:href="@{'/notice'}" class ="head_span"><br>공지사항</a>
+        <a th:href="@{'/activity'}" class ="head_span"><br>활동 내역</a>
+        <a th:href="@{'/Sos'}" class ="head_span"><br>학습 자료 게시판</a>
+        <a th:href="@{'/member/login'}" class ="head_span"><br>로그인</a>
+        <a th:href="@{'/logout'}" class="head_span"><br>로그아웃</a>
+    </div>
+</header>
+<div class ="introduction">
+    <h1>에러 발생!</h1>
+    <div>
+        status : <span th:text="${status}"></span>
+    </div>
+    <div>
+        path : <span th:text="${path}"></span>
+    </div>
+    <div>
+        error : <span th:text="${error}"></span>
+    </div>
+    <div>
+        timestamp : <span th:text="${timestamp}"></span>
+    </div>
+    <div>
+        message : <span th:text="${message}"></span>
+    </div>
+    <div>
+        exception : <span th:text="${exception}"></span>
+    </div>
+    <div>
+        trace : <span th:text="${trace}"></span>
+    </div>
+</div>
+</body>
+</html>

@@ -89,9 +89,11 @@ public class NoticeController {
 
     }
 
-    @GetMapping("/noticePost/edit")
-    public String editPage(){
-        return "Notice/noticePost.html";
+    @GetMapping("/noticePost/edit/{id}")
+    public String editPage(@PathVariable Long id, Model model){
+        GetNoticePostDTO post = noticePostService.getPost(id);
+        model.addAttribute("post",post);
+        return "Notice/noticeEdit.html";
     }
 
     @PostMapping("/noticePost/edit/{id}")

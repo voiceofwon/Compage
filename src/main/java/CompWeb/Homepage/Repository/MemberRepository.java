@@ -12,5 +12,5 @@ public interface MemberRepository extends JpaRepository<Member,Long> {
     Optional<Member> findByUsername(String username);
     List<Member> findByGrade(int grade);
     List<Member> findByUsernameContaining(String year);
-    Member deleteByUsername(String username);
+    Optional<Member> deleteMemberByUsername(String username);
 }

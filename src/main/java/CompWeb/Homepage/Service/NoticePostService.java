@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -70,6 +71,7 @@ public class NoticePostService {
             postDtoList.add(noticePostDTO);
 
         }
+        Collections.reverse(postDtoList);
         return postDtoList;
     }
 
@@ -98,8 +100,9 @@ public class NoticePostService {
     }
 
     @Transactional
-    public Long editPost(Long id, NoticePostDTO noticePostDTO){
-        NoticePost savedPost = noticePostRepository.findById(id).orElse(null);
+    public Long editPost(Long id, NoticePostDTO noticePostDTO) throws IOException{
+        NoticePost savedPost = noticePostRepository.findById(id)
+                .orElseThrow(()->new IOException("["+noticePostDTO.getTitle()+"] Not Found"));
         savedPost.setTitle(noticePostDTO.getTitle());
         savedPost.setAuthor(noticePostDTO.getAuthor());
         savedPost.setContent(noticePostDTO.getContent());

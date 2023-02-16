@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 삭제</title>
+    <link href="/css/noticeList.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+    <div class ="head_left">
+        <a th:href ="@{'/home'}"><img class="image1" src="/images/complogo.png"></img></a>
+        <span class="page"><br><br><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공지사항</strong></span>
+    </div>
+    <div class = "head_right">
+        <a th:href="@{'/intro'}" class ="head_span"><br>소학회 소개</a>
+        <a th:href="@{'/notice'}" class ="head_span"><br>공지사항</a>
+        <a th:href="@{'/activity'}" class ="head_span"><br>활동 내역</a>
+        <a th:href="@{'/Sos'}" class ="head_span"><br>학습 자료 게시판</a>
+        <a th:href="@{'/member/login'}" class ="head_span"><br>로그인</a>
+        <a th:href="@{'/logout'}" class="head_span"><br>로그아웃</a>
+    </div>
+</header>
+<div class="container">
+    <form method="post" action ="/admin/memberList/delete">
+        <h1 class="h3 mb-3 fw-normal">회원 삭제</h1>
+        <div class="form-floating">
+            <label>학번</label>
+            <input id="floatingName" type="text" class="form-control" name="username">
+        </div>
+        <button type="submit" class="w-100 btn btn-lg btn-primary">삭제</button>
+    </form>
+</div>
+</body>
+</html>

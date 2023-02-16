@@ -20,7 +20,7 @@ public class File {
     private String savedNm;
     private String savedPath;
 
-    @OneToOne(optional = false,cascade = CascadeType.ALL)
+    @OneToOne(optional = false)
     @MapsId
     @JoinColumn(name ="sosPost_id")
     private SosPost sosPost;

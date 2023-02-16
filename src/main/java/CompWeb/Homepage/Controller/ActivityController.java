@@ -3,6 +3,7 @@ package CompWeb.Homepage.Controller;
 
 import CompWeb.Homepage.DTO.ActivityPostDTO;
 import CompWeb.Homepage.DTO.GetActivityPostDTO;
+import CompWeb.Homepage.DTO.GetPostDTO;
 import CompWeb.Homepage.DTO.NoticePostDTO;
 import CompWeb.Homepage.Entity.ActivityFile;
 import CompWeb.Homepage.Entity.NoticeFile;
@@ -81,9 +82,11 @@ public class ActivityController {
 
     }
 
-    @GetMapping("/activityPost/edit")
-    public String editPage(){
-        return "Activity/activityPost.html";
+    @GetMapping("/activityPost/edit/{id}")
+    public String editPage(@PathVariable Long id, Model model){
+        GetActivityPostDTO post = activityPostService.getPost(id);
+        model.addAttribute("post",post);
+        return "Activity/activityEdit.html";
     }
 
     @PostMapping("/activityPost/edit/{id}")

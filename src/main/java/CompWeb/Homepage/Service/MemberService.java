@@ -58,6 +58,13 @@ public class MemberService implements UserDetailsService {
         }
         return true;
     }
+    @Transactional
+    public Long getMember(Long id){
+        Member member = memberRepository.findById(id)
+                .orElseThrow(()->new UsernameNotFoundException("["+id+"] Not Found"));
+
+        return member.getId();
+    }
 
     @Transactional
     public Long joinMember(MemberJoinDTO memberJoinDTO){
@@ -140,7 +147,7 @@ public class MemberService implements UserDetailsService {
     public Long deleteMember(String username){
         Member deletingMember = memberRepository.findByUsername(username)
                 .orElseThrow(()->new UsernameNotFoundException("["+username+"] Not Found"));
-        memberRepository.deleteByUsername(username);
+        memberRepository.deleteMemberByUsername(deletingMember.getUsername());
 
         return deletingMember.getId();
 
