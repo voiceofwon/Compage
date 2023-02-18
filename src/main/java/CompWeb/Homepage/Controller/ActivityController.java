@@ -9,6 +9,7 @@ import CompWeb.Homepage.Entity.ActivityFile;
 import CompWeb.Homepage.Entity.NoticeFile;
 import CompWeb.Homepage.Repository.ActivityFileRepository;
 import CompWeb.Homepage.Service.ActivityPostService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -48,7 +49,7 @@ public class ActivityController {
     public String post(){return "Activity/activityPost.html";}
 
     @PostMapping("/activityPost")
-    public String write(ActivityPostDTO activityPostDTO) throws IOException{
+    public String write(@Valid ActivityPostDTO activityPostDTO) throws IOException{
         activityPostService.savePost(activityPostDTO);
         return "redirect:/activity";
     }
@@ -90,7 +91,7 @@ public class ActivityController {
     }
 
     @PostMapping("/activityPost/edit/{id}")
-    public String editPost(@PathVariable Long id, ActivityPostDTO activityPostDTO) throws IOException{
+    public String editPost(@PathVariable Long id, @Valid ActivityPostDTO activityPostDTO) throws IOException{
         activityPostService.editPost(id,activityPostDTO);
         return "redirect:/activity";
     }

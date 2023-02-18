@@ -2,6 +2,7 @@ package CompWeb.Homepage.DTO;
 
 import CompWeb.Homepage.Entity.ActivityPost;
 import CompWeb.Homepage.Entity.SosPost;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 public class ActivityPostDTO {
     private Long id;
     private String author;
+    @NotBlank(message = "제목을 입력하세요.")
     private String title;
     private String content;
     private LocalDateTime createdDate;

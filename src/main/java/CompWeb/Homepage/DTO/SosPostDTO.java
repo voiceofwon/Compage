@@ -1,6 +1,8 @@
 package CompWeb.Homepage.DTO;
 
 import CompWeb.Homepage.Entity.SosPost;
+import jakarta.annotation.Nullable;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,6 +16,7 @@ import java.util.List;
 public class SosPostDTO {
     private Long id;
     private String author;
+    @NotBlank(message = "제목을 입력하세요.")
     private String title;
     private String content;
     private LocalDateTime createdDate;

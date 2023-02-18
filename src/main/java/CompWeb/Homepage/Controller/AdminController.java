@@ -6,6 +6,7 @@ import CompWeb.Homepage.Entity.Member;
 import CompWeb.Homepage.Repository.MemberRepository;
 import CompWeb.Homepage.Service.HistroyService;
 import CompWeb.Homepage.Service.MemberService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,7 +46,7 @@ public class AdminController {
     public String joinMemberPage() {return "Member/memberJoin.html";}
 
     @PostMapping("/joinMember")
-    public String joinMember(MemberJoinDTO memberJoinDTO) throws IOException {
+    public String joinMember(@Valid MemberJoinDTO memberJoinDTO) throws IOException {
         memberService.joinMember(memberJoinDTO);
         return "redirect:/admin";
     }
@@ -63,7 +64,7 @@ public class AdminController {
         return "Admin/memberModify.html";
     }
     @PostMapping("/memberList/{id}")
-    public String modifyMember(@PathVariable Long id, MemberModifyDTO memberModifyDTO){
+    public String modifyMember(@PathVariable Long id, @Valid MemberModifyDTO memberModifyDTO){
         Member member = memberService.findById(id);
         member.setGrade(memberModifyDTO.getGrade());
         memberRepository.save(member);
@@ -78,7 +79,7 @@ public class AdminController {
     }
 
     @PostMapping("/memberList/delete")
-    public String deleteMember(MemberDeleteDTO memberDeleteDTO){
+    public String deleteMember(@Valid MemberDeleteDTO memberDeleteDTO){
         memberService.deleteMember(memberDeleteDTO.getUsername());
         return "redirect:/admin/memberList";
     }
@@ -96,7 +97,7 @@ public class AdminController {
     }
 
     @PostMapping("/history/add")
-    public String addHistory(AddHistoryDTO addHistoryDTO){
+    public String addHistory(@Valid AddHistoryDTO addHistoryDTO){
         histroyService.addHistory(addHistoryDTO);
 
         return "redirect:/admin/history";

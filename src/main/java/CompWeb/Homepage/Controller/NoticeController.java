@@ -12,6 +12,7 @@ import CompWeb.Homepage.Repository.NoticeFileRepository;
 import CompWeb.Homepage.Service.FileService;
 import CompWeb.Homepage.Service.NoticePostService;
 import CompWeb.Homepage.Service.SosPostService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -53,7 +54,7 @@ public class NoticeController {
     }
 
     @PostMapping("/noticePost")
-    public String write(NoticePostDTO noticePostDTO) throws IOException {
+    public String write(@Valid NoticePostDTO noticePostDTO) throws IOException {
         noticePostService.savePost(noticePostDTO);
         return "redirect:/notice";
 
@@ -97,7 +98,7 @@ public class NoticeController {
     }
 
     @PostMapping("/noticePost/edit/{id}")
-    public String editPost(@PathVariable Long id, NoticePostDTO noticePostDTO) throws IOException{
+    public String editPost(@PathVariable Long id, @Valid NoticePostDTO noticePostDTO) throws IOException{
         noticePostService.editPost(id,noticePostDTO);
         return "redirect:/notice";
     }
