@@ -3,11 +3,24 @@
 <head>
     <meta charset="UTF-8" />
     <title>게시판 - 목록</title>
-    <link href="/css/sosList.css?2" rel="stylesheet" type="text/css">
+    <link href="/css/noticeList.css?2" rel="stylesheet" type="text/css">
 </head>
 <body>
-<header th:insert="/Sos/header.html"></header>
-<div class="sos">
+<header>
+    <div class ="head_left">
+        <a th:href ="@{'/home'}"><img class="image1" src="/images/complogo.png"></img></a>
+        <span class="page"><br><br><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공지사항</strong></span>
+    </div>
+    <div class = "head_right">
+        <a th:href="@{'/intro'}" class ="head_span"><br>소학회 소개</a>
+        <a th:href="@{'/notice'}" class ="head_span"><br>공지사항</a>
+        <a th:href="@{'/activity'}" class ="head_span"><br>활동 내역</a>
+        <a th:href="@{'/Sos'}" class ="head_span"><br>학습 자료 게시판</a>
+        <a th:href="@{'/member/login'}" class ="head_span"><br>로그인</a>
+        <a th:href="@{'/logout'}" class="head_span"><br>로그아웃</a>
+    </div>
+</header>
+<div class="container">
     <table class="table">
         <thead class="thead-light">
         <tr class="text-center">

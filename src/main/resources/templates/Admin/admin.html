@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>관리자 페이지</title>
-    <link href="/css/noticeList.css" rel="stylesheet" type="text/css">
+    <link href="/css/noticeList.css?11" rel="stylesheet" type="text/css">
 </head>
 <body>
 <header>
     <div class ="head_left">
         <a th:href ="@{'/home'}"><img class="image1" src="/images/complogo.png"></img></a>
-        <span class="page"><br><br><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공지사항</strong></span>
+        <span class="page"><br><br><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;관리자 페이지</strong></span>
     </div>
     <div class = "head_right">
         <a th:href="@{'/intro'}" class ="head_span"><br>소학회 소개</a>
@@ -20,25 +20,24 @@
         <a th:href="@{'/logout'}" class="head_span"><br>로그아웃</a>
     </div>
 </header>
-<a th:href="@{'/home'}">
-    <span th:text="꼼페이지"></span>
-</a>
-<br>
-<a th:href="@{'/admin'}">
-    <span th:text="관리자페이지"></span>
-</a>
-<br>
-<h1>관리자 페이지입니다.</h1>
-<a th:href="@{'/admin/joinMember'}">
-    <span th:text="일반회원_회원가입 "></span>
-</a>
-<br>
-<a th:href="@{'/admin/joinAdmin'}">
-    <span th:text="관리자_회원가입 "></span>
-</a>
-<br>
-<a th:href="@{'/admin/memberList'}">
-    <span th:text="회원목록 "></span>
-</a>
+<div class ="container">
+    <br>
+    <h1>관리자 페이지입니다.</h1>
+    <a th:href="@{'/admin/joinMember'}">
+        <span th:text="일반회원_회원가입 "></span>
+    </a>
+    <br>
+    <a th:href="@{'/admin/joinAdmin'}">
+        <span th:text="관리자_회원가입 "></span>
+    </a>
+    <br>
+    <a th:href="@{'/admin/memberList'}">
+        <span th:text="회원목록 "></span>
+    </a>
+        <br>
+    <a th:href="@{'/admin/history'}">
+        <span th:text="연혁관리 "></span>
+    </a>
+</div>
 </body>
 </html>

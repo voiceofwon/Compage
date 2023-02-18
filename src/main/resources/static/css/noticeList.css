@@ -66,9 +66,8 @@ img{
     background-position: right center;
 }
 
-.notice{
-    margin-left:350px;
-    margin-right:350px;
+.container{
+    margin:0 350px;
 }
 
 body{

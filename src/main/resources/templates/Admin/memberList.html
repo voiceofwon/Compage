@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>회원목록</title>
-    <link href="/css/noticeList.css" rel="stylesheet" type="text/css">
+    <link href="/css/noticeList.css?86" rel="stylesheet" type="text/css">
 </head>
 <body>
 <header>
@@ -20,14 +20,6 @@
         <a th:href="@{'/logout'}" class="head_span"><br>로그아웃</a>
     </div>
 </header>
-
-<a th:href="@{'/home'}">
-    <span th:text="꼼페이지"></span>
-</a>
-<br>
-<a th:href="@{'/admin'}">
-    <span th:text="관리자페이지"></span>
-</a>
 <br>
 <div class="container">
     <table class="table">
@@ -44,7 +36,9 @@
         <tbody>
         <tr class="text-center" th:each="member : ${memberList}">
             <th scope="row">
-                <span th:text="${member.name}"></span>
+                <a th:href="@{'/admin/memberList/' + ${member.id}}">
+                    <span th:text="${member.name}"></span>
+                </a>
             </th>
             <td>
                 <span th:text="${member.username}"></span>

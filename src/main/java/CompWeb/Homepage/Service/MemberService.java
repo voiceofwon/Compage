@@ -116,11 +116,17 @@ public class MemberService implements UserDetailsService {
 
     }
     @Transactional
+    public Member findById(Long id){
+        return memberRepository.findById(id)
+                .orElseThrow(()->new UsernameNotFoundException("["+id+"] Not Found"));
+    }
+    @Transactional
     public List<GetMemberDTO> getMemberList(){
         List<Member> members = memberRepository.findAll();
         List<GetMemberDTO> memberList = new ArrayList<>();
         for(Member member : members){
             GetMemberDTO getMemberDTO = GetMemberDTO.builder()
+                    .id(member.getId())
                     .name(member.getName())
                     .username(member.getUsername())
                     .grade(member.getGrade())

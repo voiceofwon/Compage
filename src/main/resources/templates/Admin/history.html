@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원목록</title>
+    <link href="/css/noticeList.css?90" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+    <div class ="head_left">
+        <a th:href ="@{'/home'}"><img class="image1" src="/images/complogo.png"></img></a>
+        <span class="page"><br><br><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;연혁 관리</strong></span>
+    </div>
+    <div class = "head_right">
+        <a th:href="@{'/intro'}" class ="head_span"><br>소학회 소개</a>
+        <a th:href="@{'/notice'}" class ="head_span"><br>공지사항</a>
+        <a th:href="@{'/activity'}" class ="head_span"><br>활동 내역</a>
+        <a th:href="@{'/Sos'}" class ="head_span"><br>학습 자료 게시판</a>
+        <a th:href="@{'/member/login'}" class ="head_span"><br>로그인</a>
+        <a th:href="@{'/logout'}" class="head_span"><br>로그아웃</a>
+    </div>
+</header>
+<br>
+<div class="container">
+    <table class="table">
+        <thead class="thead-light">
+        <tr class="text-center">
+            <th scope="col">id</th>
+            <th scope="col">content</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="text-center" th:each="history : ${historyList}">
+            <th scope="row">
+                <span th:text="${history.id}"></span>
+            </th>
+            <td>
+                <span th:text="${history.content}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="col-auto">
+        <a class="btn btn-primary" th:href="@{/admin/history/add}" role="button">연혁 추가</a>
+    </div>
+    <div class="col-auto">
+        <a class="btn btn-primary" th:href="@{/admin/history/delete}" role="button">연혁 삭제(전체가 삭제됩니다.)</a>
+    </div>
+</div>
+</body>
+</html>

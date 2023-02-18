@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 public class GetMemberDTO {
+    private Long id;
     private String name;
     private String username;
     private String grade;

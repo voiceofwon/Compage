@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>회원 삭제</title>
-    <link href="/css/noticeList.css?33" rel="stylesheet" type="text/css">
+    <title>연혁 추가</title>
+    <link href="/css/noticeList.css?100" rel="stylesheet" type="text/css">
 </head>
 <body>
+<body class="text-center d-flex">
 <header>
     <div class ="head_left">
         <a th:href ="@{'/home'}"><img class="image1" src="/images/complogo.png"></img></a>
@@ -21,14 +22,16 @@
     </div>
 </header>
 <div class="container">
-    <form method="post" action ="/admin/memberList/delete">
-        <h1 class="h3 mb-3 fw-normal">회원 삭제</h1>
+    <form method="post" action ="/admin/history/add">
+        <h1 class="h3 mb-3 fw-normal">연혁추가</h1>
         <div class="form-floating">
-            <label>학번</label>
-            <input id="floatingName" type="text" class="form-control" name="username">
+            <input id="floatingName" type="text" class="form-control" name="content">
+            <label>연혁</label>
         </div>
-        <button type="submit" class="w-100 btn btn-lg btn-primary">삭제</button>
+        <button type="submit" class="w-100 btn btn-lg btn-primary">추가</button>
     </form>
+
 </div>
+
 </body>
 </html>

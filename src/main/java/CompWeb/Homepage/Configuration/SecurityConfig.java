@@ -64,7 +64,7 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 .sessionAuthenticationErrorUrl("/login?maximumSessions")
                 .maximumSessions(1)
-                .maxSessionsPreventsLogin(false)
+                .maxSessionsPreventsLogin(true)
                 .expiredUrl("/member/login?expiredSession");
         return http.build();
     }

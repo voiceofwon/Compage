@@ -1,9 +1,10 @@
 package CompWeb.Homepage.Controller;
 
 
-import CompWeb.Homepage.DTO.AdminJoinDTO;
-import CompWeb.Homepage.DTO.MemberDeleteDTO;
-import CompWeb.Homepage.DTO.MemberJoinDTO;
+import CompWeb.Homepage.DTO.*;
+import CompWeb.Homepage.Entity.Member;
+import CompWeb.Homepage.Repository.MemberRepository;
+import CompWeb.Homepage.Service.HistroyService;
 import CompWeb.Homepage.Service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,10 @@ import java.io.IOException;
 public class AdminController {
 
     private final MemberService memberService;
+
+    private final HistroyService histroyService;
+
+    private final MemberRepository memberRepository;
 
     @GetMapping
     public String admin(){return "Admin/admin.html";}
@@ -52,6 +57,20 @@ public class AdminController {
         return "Admin/memberList.html";
     }
 
+    @GetMapping("/memberList/{id}")
+    public String modifyMemberPage(@PathVariable Long id, Model model){
+        model.addAttribute("id",id);
+        return "Admin/memberModify.html";
+    }
+    @PostMapping("/memberList/{id}")
+    public String modifyMember(@PathVariable Long id, MemberModifyDTO memberModifyDTO){
+        Member member = memberService.findById(id);
+        member.setGrade(memberModifyDTO.getGrade());
+        memberRepository.save(member);
+        return "redirect:/admin/memberList";
+
+    }
+
     @GetMapping("/memberList/delete")
     public String deleteMemberPage(){
         return "Admin/memberDelete.html";
@@ -64,6 +83,32 @@ public class AdminController {
         return "redirect:/admin/memberList";
     }
 
+
+    @GetMapping("/history")
+    public String history(Model model){
+        model.addAttribute("historyList",histroyService.getHistoryList());
+        return "Admin/history.html";
+    }
+
+    @GetMapping("/history/add")
+    public String addHistoryPage(){
+        return "Admin/addHistory.html";
+    }
+
+    @PostMapping("/history/add")
+    public String addHistory(AddHistoryDTO addHistoryDTO){
+        histroyService.addHistory(addHistoryDTO);
+
+        return "redirect:/admin/history";
+
+    }
+
+    @GetMapping("/history/delete")
+    public String deleteHistory(){
+        histroyService.deleteHistory();
+
+        return "redirect:/admin/history";
+    }
 
 
 

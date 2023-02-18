@@ -24,26 +24,19 @@
       </header>
 
       <div class="introduction">
-        <h2 class="notice_h2">Comp D&A에 오신 것을 환영합니다!</h2>
+        <h1 class="notice_h2">Comp D&A에 오신 것을 환영합니다!</h1>
         <div class="introduction_wrap">
         <img class="recommend_img" src="/images/comp.jpg">
         <a class ="introduction_span">Comp D&A는 임베디드 시스템 및 다른 전자공학 분야에 대해 같이 연구하고, 회원들과 다양한 교내외 프로젝트 및 공모전 참여를 주활동으로 하는 아주대학교 전자공학과 학술소학회입니다. 1990년 창립 소학회로, 전자과 소학회 중 가장 오랜 역사를 자랑하는 소학회 중 하나이며, 현재까지도 활발한 활동을 이어가고 있는 중입니다.</a>
 
     </div>
         <div class="history">
-            <ul class="history_ul">
-            
-                <li class="history_li"> <strong>1. </strong></li>
-
-                <li class="history_li"> <strong>2. </strong></li>
-           
-                <li class="history_li"> <strong>3. </strong></li>
-           
-                <li class="history_li"> <strong>4. </strong></li>
-            
-                <li class="history_li"> <strong>연혁 자리입니다. 뿌슝빠슝 </strong>
-                    <br>(지도교수 정기현 교수님)</li>
-            </ul>
+            <tr class="text-center" th:each="history : ${historyList}">
+                <td>
+                    <span th:text="${history.content}"></span>
+                </td>
+                <br>
+            </tr>
         </div>
       </div>
 
