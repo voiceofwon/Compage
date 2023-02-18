@@ -38,7 +38,7 @@ public class SecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/home")
+        return (web) -> web.ignoring().requestMatchers("/home","/intro")
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
     @Bean
@@ -48,6 +48,13 @@ public class SecurityConfig {
         http.authorizeHttpRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .requestMatchers("/member/**").permitAll()
+                .requestMatchers("/notice","/notice/noticePost/*",
+                        "/Sos","/Sos/post/*",
+                        "/activity","/activity/activityPost/*").hasAnyRole("USER","ADMIN")
+                .requestMatchers("/notice/noticePost","/notice/noticePost/edit/**","/notice/noticePost/delete/**",
+                        "/Sos/post","/Sos/post/edit/**","/Sos/post/delete/**",
+                        "/activity/activityPost","/activity/activityPost/edit/**", "/activity/activityPost/delete/**",
+                        "/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated();
         http.formLogin()
                 .loginPage("/member/login")
