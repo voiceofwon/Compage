@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>학습 자료 게시판 - 목록</title>
-    <link href="/css/noticeList.css?2" rel="stylesheet" type="text/css">
+    <link href="/css/noticeList.css?3" rel="stylesheet" type="text/css">
 </head>
 <body>
 <header>
@@ -21,6 +21,9 @@
     </div>
 </header>
 <div class="container">
+    <div class="col-auto">
+        <a class="btn_primary" type="submit" th:href="@{/Sos/post}" role="button">글쓰기</a>
+    </div>
     <table class="table">
         <thead class="thead-light">
         <tr class="text-center">
@@ -37,7 +40,7 @@
             </th>
             <td>
                 <a th:href="@{'/Sos/post/' + ${post.id}}">
-                    <span th:text="${post.title}"></span>
+                    <span class ="post_name" th:text="${post.title}"></span>
                 </a>
             </td>
             <td>
@@ -49,12 +52,9 @@
         </tr>
         </tbody>
     </table>
-    <div class="row">
-        <div class="col-auto mr-auto"></div>
-        <div class="col-auto">
-            <a class="btn btn-primary" th:href="@{/Sos/post}" role="button">글쓰기</a>
-        </div>
-    </div>
+
 </div>
+    <div class="wave"></div>
+    <div class="wave"></div>
 </body>
 </html>

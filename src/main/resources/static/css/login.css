@@ -12,7 +12,7 @@ header{
     background-color: #f1f9fa;
     box-shadow: 0 2px 5px rgba(0,0,0,.25);
     border-collapse: collapse;
-    
+
 }
 .head_left{
     width:20%;
@@ -24,12 +24,12 @@ img{
     width: 50%;
     height:25%;
     object-fit:contain;
-  }
+}
 
-  .page{
+.page{
     font-size: 20px;
-  }
- 
+}
+
 
 
 .head_right{
@@ -37,8 +37,27 @@ img{
     width:700px;
     margin-left:50px;
     color:black;
-    
-    
+
+
+}
+.login_btn{
+    background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+    text-align: center;
+    vertical-align: center;
+    text-decoration : none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: black;
+    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    box-shadow: 0 0 20px #eee;
+    border-radius: 50px;
+    border-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+    width:50%;
+    font-family: 'GangwonEdu_OTFBoldA';
+}
+.login_btn:hover {
+    background-position: right center;
 }
 .head_span{
     width:550px;
@@ -67,7 +86,28 @@ img{
 }
 
 .container{
-    margin:20px 350px;
+    margin:20px 550px;
+    border: 1px #a39485 solid;
+    font-size: .9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1000;
+
+}
+.h1{
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+.form-floating{
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+.wrap{
+    margin-left:3%;
 }
 
 body{

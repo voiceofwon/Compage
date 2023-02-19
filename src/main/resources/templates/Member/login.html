@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>로그인</title>
-    <link href="/css/noticeList.css?2" rel="stylesheet" type="text/css">
+    <link href="/css/login.css?16" rel="stylesheet" type="text/css">
     <!-- Style CSS -->
 </head>
 <body>
@@ -24,8 +24,9 @@
 </header>
 
 <div class="container">
-    <form method="post" action ="/member/action">
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <div class="wrap">
+    <form class="login" method="post" action ="/member/action">
+        <h1 class="h1">Please sign in</h1>
 
 
         <div class="form-floating">
@@ -39,19 +40,25 @@
 
         </div>
 
-        <div class="checkbox mb-3">
+        <div class="form-floating">
             <input id="rememberId" type="checkbox"/>
             <label for="rememberId">아이디 저장</label>
         </div>
-        <button type="submit" class="w-100 btn btn-lg btn-primary">로그인</button>
+        <br>
+        <div class="form-floating">
+        <button type="submit" class="login_btn">로그인</button>
+        </div>
     </form>
     <div th:if="${param.error}"  class="alert alert-danger" role="alert">
         <span th:text="${exception}"></span>
     </div>
     <div>
-        <p class="mt-5 mb-3 text-muted">&copy; 2023 Comp D&A WebSite By 21학번 김원중, 19학번 고준환</p>
+        <p class="mt-5 mb-3 text-muted">&copy; 2023 Comp D&A WebSite By 21학번 김원중</p>
+    </div>
     </div>
 </div>
+<div class="wave"></div>
+<div class="wave"></div>
 
 </body>
 </html>

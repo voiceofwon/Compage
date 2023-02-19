@@ -10,9 +10,12 @@ header{
     height: 40px;
     box-shadow: 0 2px 5px rgba(0,0,0,.25);
     border-collapse: collapse;
+    position: fixed;
+    z-index: 1000;
     
 }
 body{
+    color: #0d0722;
     margin:0px;
     font-family: 'GangwonEdu_OTFBoldA';
 }
@@ -22,12 +25,78 @@ body{
     margin-right:30%;
 
 }
+.Background_Container{
+    padding-top: 40px;
+    background-image: linear-gradient(120deg, #34e0f0 0%, #b400ff 100%);
+    border-radius: 85% 95% 83% 79% / 60% 80% 70% 90%;
+    width: 100%;
+    animation: morph 6s linear infinite;
+    transform-style: preserve-3d;
+    outline: 1px solid transparent;
+    will-change: border-radius;
+}
+.Background_Container:before,
+.Background_Container:after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    left: 0; top: 0;
+    border-radius: 80% 70% 70% 70% / 90% 70% 85% 90%;
+    box-shadow: 5px 5px 89px rgba(0, 102, 255, 0.55);
+    will-change: border-radius, transform, opacity;
+    animation-delay: 200ms;
+    background-image: linear-gradient(120deg, rgba(0,67,255,.55) 0%, rgba(0,103,255,.89) 100%);
+}
+
+.Background_Container:before{
+    animation: morph 6s linear infinite;
+    opacity: .4;
+    animation-duration: 1.5s;
+}
+
+.Background_Container:after{
+    animation: morph 6s linear infinite;
+    animation-delay: 400ms;
+    opacity: .15;
+    line-height: 120px;
+    text-indent: -21px;
+}
+
+@keyframes morph{
+    0%,100%{
+        border-radius: 70% 80% 70% 100% / 80% 80% 75% 90%;
+        transform: translate3d(0,0,0) rotateZ(0.01deg);
+    }
+    34%{
+        border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+        transform:  translate3d(0,5px,0) rotateZ(0.01deg);
+    }
+    50%{
+        opacity: .15;
+        transform: translate3d(0,0,0) rotateZ(0.01deg);
+    }
+    67%{
+        border-radius: 100% 60% 60% 100% / 100% 100% 60% 60% ;
+        transform: translate3d(0,-3px,0) rotateZ(0.01deg);
+    }
+}
+
+@keyframes fadeIn {
+    100% {
+        transform: scale(1.03);
+        opacity: 80%;
+    }
+}
+
 img{
     width: 100%;
     height:100%;
     object-fit:contain;
 
   }
+
 .image2{
     border-radius: 10px;
 }
@@ -76,7 +145,6 @@ img{
 }
 
 .Background_Container{
-    margin-top:5px;
     width:100%;
 
 }

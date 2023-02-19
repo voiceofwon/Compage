@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>에러 페이지입니다.</title>
-    <link href="/css/introduction.css?3" rel="stylesheet" type="text/css">
+    <link href="/css/detail.css?4" rel="stylesheet" type="text/css">
 </head>
 <body>
 <header>
@@ -20,7 +20,7 @@
         <a th:href="@{'/logout'}" class="head_span"><br>로그아웃</a>
     </div>
 </header>
-<div class ="introduction">
+<div class ="conatiner">
     <h1>에러 발생!</h1>
     <div>
         status : <span th:text="${status}"></span>
@@ -44,5 +44,8 @@
         trace : <span th:text="${trace}"></span>
     </div>
 </div>
+<div class="wave"></div>
+<div class="wave"></div>
+
 </body>
 </html>

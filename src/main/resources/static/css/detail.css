@@ -12,7 +12,6 @@ header{
     background-color: #f1f9fa;
     box-shadow: 0 2px 5px rgba(0,0,0,.25);
     border-collapse: collapse;
-    
 }
 .head_left{
     width:20%;
@@ -24,12 +23,12 @@ img{
     width: 50%;
     height:25%;
     object-fit:contain;
-  }
+}
 
-  .page{
+.page{
     font-size: 20px;
-  }
- 
+}
+
 
 
 .head_right{
@@ -37,8 +36,8 @@ img{
     width:700px;
     margin-left:50px;
     color:black;
-    
-    
+
+
 }
 .head_span{
     width:550px;
@@ -77,7 +76,7 @@ body{
     background-color: #f1f9fa;*/
 }
 
-table{
+.card{
 
     width:100%;
     border: 1px #a39485 solid;
@@ -88,24 +87,41 @@ table{
     overflow: hidden;
     z-index: 1000;
 }
-td{
+.card-title{
     text-align: center;
+    font-size:30px;
     height:40px;
-    border-bottom: 1px solid rgba(0,0,0,.1);
     background: #fff;
+    line-height: 40px;
+    margin-bottom: 0;
 }
-th{
-    text-align: center;
-    height:40px;
+.card-author{
+    text-align: right;
+    font-size:20px;
+    height:20px;
     border-bottom: 1px solid rgba(0,0,0,.1);
     background: #fff;
+    line-height: 20px;
+}
+.card-text{
+    text-align: left;
+    height:300px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    background: #fff;
+    margin-bottom: 0;
+}
+.card-file{
+    text-align: left;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    background: #fff;
+    margin:0;
 }
 
 .btn_primary{
     font-size: 18px;
     text-align: center;
     text-decoration : none;
-    color: #6f919a;
+    color: cornflowerblue;
 }
 .post_name{
     font-size: 12px;
@@ -158,4 +174,23 @@ th{
     50% {
         transform: translate3d(0, 5px, 0);
     }
+}
+
+.btn{
+    background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+    text-align: center;
+    vertical-align: center;
+    text-decoration : none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: black;
+    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    box-shadow: 0 0 20px #eee;
+    border-radius: 50px;
+    border-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+    font-family: 'GangwonEdu_OTFBoldA';
+}
+.btn:hover {
+    background-position: right center;
 }
