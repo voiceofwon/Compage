@@ -10,7 +10,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/upload/**")
-                .addResourceLocations("file:///C:/Project/files/");
+                .addResourceLocations("file:///home/compdna/Uploads/");
 
     }
 }

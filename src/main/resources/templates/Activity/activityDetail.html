@@ -34,7 +34,7 @@
 
             <p class="card-file">
             <a th:href="@{'/activity/activityPost/attach/' + ${file.id}}" th:text="${file.orgNm}"></a>
-            <embed width="100%" height="600" th:src="@{'/upload/'+${file.savedNm}}"></embed>
+            <embed width="100%" height="100%" th:src="@{'/upload/'+${file.savedNm}}"></embed>
             </p>
         </div>
     </div>

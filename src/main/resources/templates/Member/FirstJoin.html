@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>꼼_관리자 회원가입</title>
+  <link href="/css/noticeList.css?2" rel="stylesheet" type="text/css">
+</head>
+<body>
+<body class="text-center d-flex">
+<header>
+  <div class ="head_left">
+    <a th:href ="@{'/home'}"><img class="image1" src="/images/complogo.png"></img></a>
+    <span class="page"><br><br><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;관리자 회원가입</strong></span>
+  </div>
+  <div class = "head_right">
+    <a th:href="@{'/intro'}" class ="head_span"><br>소학회 소개</a>
+    <a th:href="@{'/notice'}" class ="head_span"><br>공지사항</a>
+    <a th:href="@{'/activity'}" class ="head_span"><br>활동 내역</a>
+    <a th:href="@{'/Sos'}" class ="head_span"><br>학습 자료 게시판</a>
+    <a th:href="@{'/member/login'}" class ="head_span"><br>로그인</a>
+    <a th:href="@{'/logout'}" class="head_span"><br>로그아웃</a>
+  </div>
+</header>
+<div class="container">
+  <form method="post" action ="/intro/joinAdmin">
+    <h1 class="h3 mb-3 fw-normal">꼼 관리자 회원가입</h1>
+    <div class="form-floating">
+      <input id="floatingName" type="text" class="form-control" name="name">
+      <label for="floatingInput">이름</label>
+    </div>
+    <div class="form-floating">
+      <input id="floatingInput" type="text" class="form-control" name="username">
+      <label for="floatingInput">학번</label>
+    </div>
+    <div class="form-floating">
+      <input id="floatingPassword" type="password" class="form-control" name="password" autocomplete="off">
+      <label for="floatingPassword">Password</label>
+    </div>
+    <div class="form-floating">
+      <input id="floatingGrade" type="grade" class="form-control" name="grade" autocomplete="off">
+      <label for="floatingPassword">학년</label>
+    </div>
+    <div class="form-floating">
+      <input id="floatingPhoneNum" type="phoneNum" class="form-control" name="phoneNum" autocomplete="off">
+      <label for="floatingPassword">전화번호</label>
+    </div>
+    <button type="submit" class="w-100 btn btn-lg btn-primary">회원가입</button>
+  </form>
+
+</div>
+
+</body>
+</html>

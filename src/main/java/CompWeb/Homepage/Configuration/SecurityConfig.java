@@ -38,7 +38,7 @@ public class SecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/home","/intro")
+        return (web) -> web.ignoring().requestMatchers("/home","/intro/**","/","/intro/adminJoin")
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
     @Bean
@@ -47,7 +47,7 @@ public class SecurityConfig {
         http.requestCache().disable();
         http.authorizeHttpRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .requestMatchers("/member/**").permitAll()
+                .requestMatchers("/member/**","/","/intro/**").permitAll()
                 .requestMatchers("/notice","/notice/noticePost/*",
                         "/Sos","/Sos/post/*",
                         "/activity","/activity/activityPost/*").hasAnyRole("USER","ADMIN")
