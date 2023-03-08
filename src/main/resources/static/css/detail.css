@@ -76,6 +76,10 @@ body{
     background-color: #f1f9fa;*/
 }
 
+pre{
+    font-family: 'GangwonEdu_OTFBoldA';
+}
+
 .card{
 
     width:100%;

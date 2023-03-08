@@ -30,7 +30,9 @@
                         th:text="|작성자 : ${post.author}, ${#temporals.format(post.createdDate, 'yyyy-MM-dd HH:mm')}|"
                 ></small>
             </p>
-            <p class="card-text" th:text="${post.content}"></p>
+            <pre class="card-text" th:text="${post.content}">
+
+            </pre>
 
             <p class="card-file">
                 <a th:href="@{'/Sos/post/attach/' + ${file.id}}" th:text="${file.orgNm}"></a>

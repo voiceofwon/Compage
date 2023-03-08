@@ -32,7 +32,9 @@
 
             </p>
 
-        <p class="card-text" th:text="${post.content}"></p>
+            <pre class="card-text" th:text="${post.content}">
+
+            </pre>
         <p class="card-file"  >
             <a th:href="@{'/notice/noticePost/attach/' + ${file.id}}" th:text="${file.orgNm}"></a>
         </p>

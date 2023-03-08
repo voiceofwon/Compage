@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <title th:text="|활동내역 - , ${post.title}|"></title>
-    <link href="/css/detail.css?2" rel="stylesheet" type="text/css">
+    <link href="/css/detail.css?3" rel="stylesheet" type="text/css">
 </head>
 <body>
 <header>
@@ -30,8 +30,9 @@
                         th:text="|작성자 : ${post.author}, ${#temporals.format(post.createdDate, 'yyyy-MM-dd HH:mm')}|"
                 ></small><br>
             </p>
-            <p class="card-text" th:text="${post.content}"></p>
+            <pre class="card-text" th:text="${post.content}">
 
+            </pre>
             <p class="card-file">
             <a th:href="@{'/activity/activityPost/attach/' + ${file.id}}" th:text="${file.orgNm}"></a>
             <embed width="100%" height="100%" th:src="@{'/upload/'+${file.savedNm}}"></embed>
