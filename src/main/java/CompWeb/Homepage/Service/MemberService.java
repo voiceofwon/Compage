@@ -17,9 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -136,6 +134,7 @@ public class MemberService implements UserDetailsService {
                     .build();
             memberList.add(getMemberDTO);
         }
+        Collections.sort(memberList,new MemberIdComparator());
         return memberList;
     }
 
@@ -159,4 +158,16 @@ public class MemberService implements UserDetailsService {
 
     }
 
+}
+
+class MemberIdComparator implements Comparator<GetMemberDTO>{
+    @Override
+    public int compare(GetMemberDTO o1, GetMemberDTO o2) {
+        if(Integer.parseInt(o1.getUsername()) > Integer.parseInt(o2.getUsername())){
+            return 1;
+        } else if(Integer.parseInt(o1.getUsername()) < Integer.parseInt(o2.getUsername())){
+            return -1;
+        }
+        return 0;
+    }
 }
