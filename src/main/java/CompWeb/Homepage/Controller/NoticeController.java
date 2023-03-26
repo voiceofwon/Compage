@@ -1,10 +1,7 @@
 package CompWeb.Homepage.Controller;
 
 
-import CompWeb.Homepage.DTO.GetNoticePostDTO;
-import CompWeb.Homepage.DTO.GetPostDTO;
-import CompWeb.Homepage.DTO.NoticePostDTO;
-import CompWeb.Homepage.DTO.SosPostDTO;
+import CompWeb.Homepage.DTO.*;
 import CompWeb.Homepage.Entity.File;
 import CompWeb.Homepage.Entity.NoticeFile;
 import CompWeb.Homepage.Repository.FileRepository;
@@ -12,6 +9,7 @@ import CompWeb.Homepage.Repository.NoticeFileRepository;
 import CompWeb.Homepage.Service.FileService;
 import CompWeb.Homepage.Service.NoticePostService;
 import CompWeb.Homepage.Service.SosPostService;
+import CompWeb.Homepage.Service.TopFixedPostService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -40,10 +38,15 @@ public class NoticeController {
     @Autowired
     private NoticeFileRepository noticeFileRepository;
 
+    @Autowired
+    private TopFixedPostService topFixedPostService;
+
     @GetMapping
     public String Sos(Model model){
         List<NoticePostDTO> noticePostDTOList = noticePostService.getPostList();
+        List<TopFixedPostDTO> topFixedPostDTOList = topFixedPostService.getPostList();
         model.addAttribute("postList",noticePostDTOList);
+        model.addAttribute("TopPostList", topFixedPostDTOList);
 
         return "Notice/notice.html";
     }

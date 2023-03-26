@@ -1,14 +1,12 @@
 package CompWeb.Homepage.Controller;
 
 
-import CompWeb.Homepage.DTO.ActivityPostDTO;
-import CompWeb.Homepage.DTO.GetActivityPostDTO;
-import CompWeb.Homepage.DTO.GetPostDTO;
-import CompWeb.Homepage.DTO.NoticePostDTO;
+import CompWeb.Homepage.DTO.*;
 import CompWeb.Homepage.Entity.ActivityFile;
 import CompWeb.Homepage.Entity.NoticeFile;
 import CompWeb.Homepage.Repository.ActivityFileRepository;
 import CompWeb.Homepage.Service.ActivityPostService;
+import CompWeb.Homepage.Service.TopFixedPostService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
@@ -36,11 +34,13 @@ public class ActivityController {
     private final ActivityPostService activityPostService;
     private final ActivityFileRepository activityFileRepository;
 
-
+    private final TopFixedPostService topFixedPostService;
     @GetMapping
     public String Activity(Model model){
         List<ActivityPostDTO> activityPostDTOList = activityPostService.getPostList();
+        List<TopFixedPostDTO> topFixedPostDTOList = topFixedPostService.getPostList();
         model.addAttribute("postList",activityPostDTOList);
+        model.addAttribute("TopPostList", topFixedPostDTOList);
 
         return "Activity/activityList.html";
     }

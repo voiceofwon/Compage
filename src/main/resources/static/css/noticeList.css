@@ -100,6 +100,9 @@ th{
     border-bottom: 1px solid rgba(0,0,0,.1);
     background: #fff;
 }
+.row1{
+    color : red;
+}
 
 .btn_primary{
     font-size: 18px;

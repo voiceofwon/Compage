@@ -3,10 +3,12 @@ package CompWeb.Homepage.Controller;
 
 import CompWeb.Homepage.DTO.GetPostDTO;
 import CompWeb.Homepage.DTO.SosPostDTO;
+import CompWeb.Homepage.DTO.TopFixedPostDTO;
 import CompWeb.Homepage.Entity.File;
 import CompWeb.Homepage.Repository.FileRepository;
 import CompWeb.Homepage.Service.FileService;
 import CompWeb.Homepage.Service.SosPostService;
+import CompWeb.Homepage.Service.TopFixedPostService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -36,10 +38,15 @@ public class SosController {
     @Autowired
     private FileRepository fileRepository;
 
+    @Autowired
+    private TopFixedPostService topFixedPostService;
+
     @GetMapping
     public String Sos(Model model){
         List<SosPostDTO> sosPostDTOList = sosPostService.getPostList();
+        List<TopFixedPostDTO> topFixedPostDTOList = topFixedPostService.getPostList();
         model.addAttribute("postList",sosPostDTOList);
+        model.addAttribute("TopPostList", topFixedPostDTOList);
 
         return "Sos/list.html";
     }

@@ -6,6 +6,7 @@ import CompWeb.Homepage.Entity.Member;
 import CompWeb.Homepage.Repository.MemberRepository;
 import CompWeb.Homepage.Service.HistroyService;
 import CompWeb.Homepage.Service.MemberService;
+import CompWeb.Homepage.Service.TopFixedPostService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,8 @@ public class AdminController {
     private final HistroyService histroyService;
 
     private final MemberRepository memberRepository;
+
+    private final TopFixedPostService topFixedPostService;
 
     @GetMapping
     public String admin(){return "Admin/admin.html";}
@@ -109,6 +112,19 @@ public class AdminController {
         histroyService.deleteHistory();
 
         return "redirect:/admin/history";
+    }
+
+    @GetMapping("/postTopFixedPost")
+    public String topFixedPostPage(){
+
+        return "TopFixedPost/topFixedPost.html";
+    }
+
+    @PostMapping("/postTopFixedPost")
+    public String topFixedPost(@Valid TopFixedPostDTO topFixedPostDTO) throws IOException{
+        topFixedPostService.savePost(topFixedPostDTO);
+
+        return "redirect:/admin";
     }
 
 

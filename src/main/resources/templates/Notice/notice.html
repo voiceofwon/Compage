@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항 - 목록</title>
-    <link href="/css/noticeList.css?57" rel="stylesheet" type="text/css">
+    <link href="/css/noticeList.css?58" rel="stylesheet" type="text/css">
 </head>
 <body>
     <header>
@@ -37,6 +37,22 @@
               </tr>
               </thead>
               <tbody>
+              <tr class="text-center" th:each="topPost : ${TopPostList}">
+                  <th scope="row">
+                      <span class="row1" th:text="공지"></span>
+                  </th>
+                  <td>
+                      <a th:href="@{'/topFixedPost/' + ${topPost.id}}">
+                          <span class ="post_name" th:text="${topPost.title}"></span>
+                      </a>
+                  </td>
+                  <td>
+                      <span th:text="${topPost.author}"></span>
+                  </td>
+                  <td>
+                      <span th:text="${#temporals.format(topPost.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+                  </td>
+              </tr>
               <tr class="text-center" th:each="post : ${postList}">
                   <th scope="row">
                       <span th:text="${post.id}"></span>
