@@ -22,6 +22,7 @@
 * 1.0.8 활동내역 사진 업로드 버그 수정, directory bug fix
 * 1.0.11 글 조회시 줄바꿈 되지않는 오류 수정 
 * 1.0.12 글 조회 overflow bug fix
+* 1.1.0 관리자 페이지 회원 조회 학번별 Sorting 기능 추가 및 bug fix
 
 
 ### :bear: 개발 환경
