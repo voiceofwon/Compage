@@ -63,7 +63,7 @@
 > * Lombok
 
 ### :bear: ERD
-![image](https://user-images.githubusercontent.com/104613104/222049006-282fd8b9-b3fc-4c2f-9032-149a4425d61f.png)
+![image](https://user-images.githubusercontent.com/104613104/230004185-69cc3c78-2735-4039-94d5-2ba6513e404c.png)
 
 
 ### :bear: 사이트 제작 목적
