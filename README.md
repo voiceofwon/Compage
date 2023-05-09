@@ -25,6 +25,7 @@
 * 1.1.0 관리자 페이지 회원 조회 학번별 Sorting 기능 추가 및 bug fix
 * 1.1.2 Post edit page에서 기존 글을 불러오지 못 하는 bug fix
 * 1.1.4 상단고정공지(TopFixedPost) 기능 추가 및 글쓰기 view 개선
+* 1.1.8 상단고정공지 파일첨부 추가 글 조회 버그 Fix
 
 
 ### :bear: 개발 환경
