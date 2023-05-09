@@ -16,26 +16,15 @@ import java.time.LocalDateTime;
 @Getter@Setter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class NoticePost {
+@Table(name = "notice_post")
+public class NoticePost extends Post{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 25, nullable = false)
-    private String author;
 
-    @Column(length = 100, nullable = false)
-    private String title;
 
-    @Column(columnDefinition = "TEXT",nullable = false)
-    private String content;
-
-    @CreatedDate
-    private LocalDateTime createdDate;
-
-    @LastModifiedDate
-    private LocalDateTime modifiedDate;
 
     @OneToOne(mappedBy = "noticePost", cascade = CascadeType.ALL,optional = false)
     @PrimaryKeyJoinColumn
@@ -44,8 +33,8 @@ public class NoticePost {
     @Builder
     public NoticePost(Long id, String author, String title, String content){
         this.id=id;
-        this.author=author;
-        this.title=title;
-        this.content=content;
+        this.setAuthor(author);
+        this.setTitle(title);
+        this.setContent(content);
     }
 }

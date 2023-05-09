@@ -14,27 +14,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class SosPost {
+@Table(name = "sos_post")
+public class SosPost extends Post{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
+    @Column(name = "id")
     private Long id;
 
-    @Column(length = 25, nullable = false)
-    private String author;
 
-    @Column(length = 100, nullable = false)
-    private String title;
-
-    @Column(columnDefinition = "TEXT",nullable = false)
-    private String content;
-
-    @CreatedDate
-    private LocalDateTime createdDate;
-
-    @LastModifiedDate
-    private LocalDateTime modifiedDate;
 
     @OneToOne(mappedBy ="sosPost",optional = false, cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
@@ -43,8 +31,8 @@ public class SosPost {
     @Builder
     public SosPost(Long id, String author, String title, String content){
         this.id=id;
-        this.author=author;
-        this.title=title;
-        this.content=content;
+        this.setAuthor(author);
+        this.setTitle(title);
+        this.setContent(content);
     }
 }

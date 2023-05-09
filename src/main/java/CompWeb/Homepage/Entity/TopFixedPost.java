@@ -14,32 +14,23 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class TopFixedPost {
+@Table(name = "top_fixed_post")
+public class TopFixedPost extends Post{
 
     @Id
     @GeneratedValue
     Long id;
 
-    @Column(length = 25, nullable = false)
-    private String author;
 
-    @Column(length = 100, nullable = false)
-    private String title;
 
-    @Column(columnDefinition = "TEXT",nullable = false)
-    private String content;
-
-    @CreatedDate
-    private LocalDateTime createdDate;
-
-    @LastModifiedDate
-    private LocalDateTime modifiedDate;
-
+    @OneToOne(mappedBy = "topFixedPost", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private TopFixedFile topFixedFile;
     @Builder
     public TopFixedPost(Long id, String author, String title, String content){
         this.id=id;
-        this.author=author;
-        this.title=title;
-        this.content=content;
+        this.setAuthor(author);
+        this.setTitle(title);
+        this.setContent(content);
     }
 }

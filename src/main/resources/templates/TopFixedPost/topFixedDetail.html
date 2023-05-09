@@ -35,6 +35,9 @@
             <pre class="card-text" th:text="${post.content}">
 
             </pre>
+            <p class="card-file">
+                <a th:href="@{'/topFixedPost/attach/' + ${file.id}}" th:text="${file.orgNm}"></a>
+            </p>
         </div>
     </div>
     <div class="row mt-3">

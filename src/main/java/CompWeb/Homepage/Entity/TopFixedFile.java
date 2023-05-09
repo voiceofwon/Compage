@@ -1,6 +1,5 @@
 package CompWeb.Homepage.Entity;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,12 +8,10 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Getter@Setter
-@Table(name = "file")
-public class File {
-
+public class TopFixedFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="sosPost_id")
+    @Column(name = "topFixed_id")
     private Long id;
 
     private String orgNm;
@@ -23,7 +20,6 @@ public class File {
 
     @OneToOne(optional = false)
     @MapsId
-    @JoinColumn(name ="sosPost_id")
-    private SosPost sosPost;
-
+    @JoinColumn(name="topFixedPost_id")
+    private TopFixedPost topFixedPost;
 }
