@@ -32,7 +32,7 @@ public class AdminController {
     private final TopFixedPostService topFixedPostService;
 
     @GetMapping
-    public String admin(){return "Admin/admin.html";}
+    public String admin(){return "Admin/admin_new.html";}
 
     @GetMapping("/joinAdmin")
     public String joinAdminPage(){return "Member/adminJoin.html";}
