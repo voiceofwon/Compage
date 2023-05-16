@@ -57,7 +57,7 @@ public class NoticePostService {
 
     @Transactional
     public List<NoticePostDTO> getPostList() {
-        List<NoticePost> postList = noticePostRepository.findAll();
+        List<NoticePost> postList = noticePostRepository.findAllJoinFetch();
         List<NoticePostDTO> postDtoList = new ArrayList<>();
 
         for (NoticePost noticePost : postList) {
