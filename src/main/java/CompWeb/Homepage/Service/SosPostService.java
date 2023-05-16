@@ -57,7 +57,7 @@ public class SosPostService {
 
     @Transactional
     public List<SosPostDTO> getPostList() {
-        List<SosPost> postList = sosPostRepository.findAll();
+        List<SosPost> postList = sosPostRepository.findAllJoinFetch();
         List<SosPostDTO> postDtoList = new ArrayList<>();
 
         for (SosPost sosPost : postList) {

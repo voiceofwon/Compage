@@ -7,8 +7,10 @@ import CompWeb.Homepage.Entity.Post;
 import CompWeb.Homepage.Repository.MemberRepository;
 import CompWeb.Homepage.Repository.NoticeFileRepository;
 import CompWeb.Homepage.Repository.NoticePostRepository;
+import CompWeb.Homepage.Service.ActivityPostService;
 import CompWeb.Homepage.Service.MemberService;
 import CompWeb.Homepage.Service.NoticePostService;
+import CompWeb.Homepage.Service.SosPostService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +42,12 @@ class HomepageApplicationTests {
 
 	@Autowired
 	private NoticePostService noticePostService;
+
+	@Autowired
+	private ActivityPostService activityPostService;
+
+	@Autowired
+	private SosPostService sosPostService;
 
 
 
@@ -86,10 +94,24 @@ class HomepageApplicationTests {
 
 	@Test
 	@Transactional
-	void notice_post_sql_test(){
+	void notice_Service_sql_test_N1(){
 		noticePostService.getPostList();
 		noticePostService.getPost(3L);
 
+	}
+
+	@Test
+	@Transactional
+	void sos_Service_sql_test_N1(){
+		sosPostService.getPostList();
+		sosPostService.getPost(3L);
+	}
+
+	@Test
+	@Transactional
+	void activity_Service_sql_test_N1(){
+		activityPostService.getPostList();
+		activityPostService.getPost(3L);
 	}
 
 }

@@ -58,7 +58,7 @@ public class ActivityPostService {
 
     @Transactional
     public List<ActivityPostDTO> getPostList() {
-        List<ActivityPost> postList = activityPostRepository.findAll();
+        List<ActivityPost> postList = activityPostRepository.findAllJoinFetch();
         List<ActivityPostDTO> postDtoList = new ArrayList<>();
 
         for (ActivityPost activityPost : postList) {
