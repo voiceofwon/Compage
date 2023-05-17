@@ -114,4 +114,11 @@ class HomepageApplicationTests {
 		activityPostService.getPost(3L);
 	}
 
+	@Test
+	@Transactional
+	void member_Service_sql_test_N1(){
+		memberService.getMemberList();
+		memberService.getMember(3L);
+	}
+
 }

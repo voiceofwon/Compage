@@ -120,7 +120,7 @@ public class MemberService implements UserDetailsService {
     }
     @Transactional
     public List<GetMemberDTO> getMemberList(){
-        List<Member> members = memberRepository.findAll();
+        List<Member> members = memberRepository.findAllJoinfetch();
         List<GetMemberDTO> memberList = new ArrayList<>();
         for(Member member : members){
             GetMemberDTO getMemberDTO = GetMemberDTO.builder()

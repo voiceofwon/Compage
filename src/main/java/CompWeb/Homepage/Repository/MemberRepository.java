@@ -2,6 +2,7 @@ package CompWeb.Homepage.Repository;
 
 import CompWeb.Homepage.Entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,4 +14,7 @@ public interface MemberRepository extends JpaRepository<Member,Long> {
     List<Member> findByGrade(int grade);
     List<Member> findByUsernameContaining(String year);
     Optional<Member> deleteMemberByUsername(String username);
+
+    @Query("select DISTINCT o from Member o join fetch o.roles")
+    List<Member> findAllJoinfetch();
 }
