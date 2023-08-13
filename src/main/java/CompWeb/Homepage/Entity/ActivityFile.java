@@ -10,6 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 @Table(name = "activityFile")
+//활동내역 첨부파일 Entity
 public class ActivityFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

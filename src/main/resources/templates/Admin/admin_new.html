@@ -2,9 +2,10 @@
 <html >
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지</title>
 
-    <link rel="stylesheet" href="/css/admin.css?15">
+    <link rel="stylesheet" href="/css/admin.css" type="text/css">
 
 </head>
 
@@ -24,17 +25,11 @@
             <li ><a th:href="@{'/admin/memberList'}">회원목록</a></li>
             <li ><a th:href="@{'/admin/history'}">연혁관리</a></li>
             <li ><a th:href="@{'/admin/postTopFixedPost'}">상단 고정 공지 추가</a></li>
-            <li>Menu Item</li>
             <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
+            <li>누적 방문자수 : <a th:text="${Total}"></a></li>
+            <li>금일 방문자수 : <a th:text="${Today}"></a></li>
+            <li>월별 방문자수 : </li>
+            <li><a th:text="${Month}"></a></li>
             <br>
             <li>Comp_AdminPage_by_김원중</li>
         </ul>

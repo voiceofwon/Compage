@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "top_fixed_post")
+//상단고정공지 Entity
 public class TopFixedPost extends Post{
 
     @Id

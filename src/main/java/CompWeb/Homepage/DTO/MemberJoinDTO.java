@@ -8,6 +8,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.List;
 
+//일반 회원 회원가입을 위한 DTO
 @Data
 @Builder
 @AllArgsConstructor

@@ -10,6 +10,7 @@ import lombok.*;
 @Builder
 @Getter@Setter
 @Table(name = "file")
+//학습자료게시판 첨부파일 Entity
 public class File {
 
     @Id

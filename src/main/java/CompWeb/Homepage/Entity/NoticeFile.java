@@ -10,6 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 @Table(name = "noticeFile")
+//공지사항 첨부파일 Entity
 public class NoticeFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

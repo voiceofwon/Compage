@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
+//활동내역 글쓰기 DTO
 
 @Getter
 @Setter

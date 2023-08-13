@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Builder
 @EntityListeners(AuditingEntityListener.class)
+//사이트 회원 Entity
 public class Member implements UserDetails {
 
     @Id

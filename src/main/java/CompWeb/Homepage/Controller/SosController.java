@@ -25,6 +25,8 @@ import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+
+//학습 자료 게시판 Controller
 @Controller
 @RequestMapping("/Sos")
 public class SosController {
@@ -42,8 +44,11 @@ public class SosController {
     private TopFixedPostService topFixedPostService;
 
     @GetMapping
+    //학습 자료 게시판 LIST
     public String Sos(Model model){
+        //게시글 LIST
         List<SosPostDTO> sosPostDTOList = sosPostService.getPostList();
+        //상단 고정 공지 LIST
         List<TopFixedPostDTO> topFixedPostDTOList = topFixedPostService.getPostList();
         model.addAttribute("postList",sosPostDTOList);
         model.addAttribute("TopPostList", topFixedPostDTOList);
@@ -52,11 +57,13 @@ public class SosController {
     }
 
     @GetMapping("/post")
+    //학습자료 게시판 글쓰기 page
     public  String post(){
         return "Sos/post.html";
     }
 
     @PostMapping("/post")
+    //학습자료 게시판 글쓰기 요청 POST
     public String write(@Valid SosPostDTO sosPostDTO) throws IOException{
         sosPostService.savePost(sosPostDTO);
         return "redirect:/Sos";
@@ -64,7 +71,9 @@ public class SosController {
     }
 
     @GetMapping("/post/{id}")
+    //게시글 조회
     public  String detail(@PathVariable("id")Long id, Model model){
+        //게시글 세부정보 및 첨부파일 load
         GetPostDTO getPostDTO = sosPostService.getPost(id);
         File file = getPostDTO.getFile();
         model.addAttribute("post",getPostDTO);
@@ -73,6 +82,7 @@ public class SosController {
     }
 
     @GetMapping("/post/attach/{id}")
+    //게시글 첨부파일 다운로드
     public ResponseEntity<Resource> downloadAttach(@PathVariable Long id) throws MalformedURLException{
         File file = fileRepository.findById(id).orElse(null);
 
@@ -87,6 +97,7 @@ public class SosController {
     }
 
     @GetMapping("/post/delete/{id}")
+    //게시글 삭제
     public String deletePost(@PathVariable Long id){
         sosPostService.deletePost(id);
         return "redirect:/Sos";
@@ -94,13 +105,16 @@ public class SosController {
     }
 
     @GetMapping("/post/edit/{id}")
+    //게시글 수정
     public String editPage(@PathVariable Long id, Model model){
+        //기존 글을 불러오기 위한 model
         GetPostDTO post = sosPostService.getPost(id);
         model.addAttribute("post",post);
         return "Sos/edit.html";
     }
 
     @PostMapping("/post/edit/{id}")
+    //게시글 수정 요청 POST
     public String editPost(@PathVariable Long id,@Valid SosPostDTO sosPostDTO) throws IOException{
         sosPostService.editPost(id,sosPostDTO);
         return "redirect:/Sos";

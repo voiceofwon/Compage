@@ -8,7 +8,7 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-
+//활동내역 게시글 조회 DTO
 @Getter
 @Setter
 @ToString

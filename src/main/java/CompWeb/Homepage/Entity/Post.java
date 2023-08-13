@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @NoArgsConstructor
 @AllArgsConstructor
+//게시글 Entity의 공통부분을 재작성 하지 않기 위한 abstract class
 public abstract class Post {
     @Column(length = 25, nullable = false)
     private String author;

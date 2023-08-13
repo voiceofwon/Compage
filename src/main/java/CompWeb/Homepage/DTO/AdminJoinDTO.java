@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+//관리자 멤버 회원가입 DTO
 @Data
 @Builder
 @AllArgsConstructor

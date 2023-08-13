@@ -9,6 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
+//학습자료 게시판 글쓰기를 위한 DTO
 @Getter
 @Setter
 @ToString

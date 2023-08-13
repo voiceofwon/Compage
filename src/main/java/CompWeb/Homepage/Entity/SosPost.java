@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "sos_post")
+//학습자료 게시판 게시글 Entity
 public class SosPost extends Post{
 
     @Id

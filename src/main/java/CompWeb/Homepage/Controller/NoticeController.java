@@ -29,6 +29,8 @@ import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+
+//공지사항 Controller
 @Controller
 @RequestMapping("/notice")
 public class NoticeController {
@@ -42,8 +44,11 @@ public class NoticeController {
     private TopFixedPostService topFixedPostService;
 
     @GetMapping
-    public String Sos(Model model){
+    //공지사항 List
+    public String Notice(Model model){
+        //공지사항 DTO LIST
         List<NoticePostDTO> noticePostDTOList = noticePostService.getPostList();
+        //상단 고정 공지 DTO LIST
         List<TopFixedPostDTO> topFixedPostDTOList = topFixedPostService.getPostList();
         model.addAttribute("postList",noticePostDTOList);
         model.addAttribute("TopPostList", topFixedPostDTOList);
@@ -52,19 +57,22 @@ public class NoticeController {
     }
 
     @GetMapping("/noticePost")
+    //공지사항 글쓰기 page
     public  String post(){
         return "Notice/noticePost.html";
     }
 
     @PostMapping("/noticePost")
+    //공지사항 글쓰기 요청 POST
     public String write(@Valid NoticePostDTO noticePostDTO) throws IOException {
         noticePostService.savePost(noticePostDTO);
         return "redirect:/notice";
-
     }
 
     @GetMapping("/noticePost/{id}")
+    //공지사항 조회
     public  String detail(@PathVariable("id")Long id, Model model){
+        //게시글 세부정보, 첨부파일 load
         GetNoticePostDTO getNoticePostDTO = noticePostService.getPost(id);
         NoticeFile file = getNoticePostDTO.getFile();
         model.addAttribute("post",getNoticePostDTO);
@@ -87,6 +95,7 @@ public class NoticeController {
     }
 
     @GetMapping("/noticePost/delete/{id}")
+    //공지사항 삭제
     public String deletePost(@PathVariable Long id){
         noticePostService.deletePost(id);
         return "redirect:/notice";
@@ -94,13 +103,16 @@ public class NoticeController {
     }
 
     @GetMapping("/noticePost/edit/{id}")
+    //공지사항 수정
     public String editPage(@PathVariable Long id, Model model){
+        //기존 게시글 load를 위한 Model
         GetNoticePostDTO post = noticePostService.getPost(id);
         model.addAttribute("post",post);
         return "Notice/noticeEdit.html";
     }
 
     @PostMapping("/noticePost/edit/{id}")
+    //공지사항 수정 요청 POST
     public String editPost(@PathVariable Long id, @Valid NoticePostDTO noticePostDTO) throws IOException{
         noticePostService.editPost(id,noticePostDTO);
         return "redirect:/notice";

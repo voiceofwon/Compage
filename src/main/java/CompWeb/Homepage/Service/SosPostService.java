@@ -30,7 +30,6 @@ public class SosPostService {
         SosPost sosPost = sosPostDTO.toEntity();
 
 
-
         File file = fileService.saveFile(sosPostDTO.getMultipartFile());
         if(file != null) {
             sosPost.setFile(file);

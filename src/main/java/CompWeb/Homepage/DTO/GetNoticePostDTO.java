@@ -8,6 +8,8 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+
+//공지사항 게시글 조회를 위한 DTO
 @Getter
 @Setter
 @ToString

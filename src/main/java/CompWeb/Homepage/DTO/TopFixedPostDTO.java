@@ -8,6 +8,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
+
+
+//상단 고정공지 글쓰기를 위한 DTO
 @Getter@Setter
 @ToString
 @NoArgsConstructor

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>꼼 홈페이지에 오신 것을 환영합니다!</title>
-    <link href="/css/main.css?83" rel="stylesheet" type="text/css">
+    <link href="/css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body margin="0">
     <header>
@@ -23,8 +23,14 @@
     </header>
 
       <div class="Background_Container">
-        <img class="image2" src="/images/mainbackground.png"></img>
-      </div>   
+
+        <img class="image2" src="/images/mainbackground.png">
+          <a class="visitor" th:text="${TotalVisitor}"></a>
+          <a class="visitor">누적 방문수</a>
+
+
+      </div>
+
     
 </body>
 </html>

@@ -8,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Getter@Setter
+//상단고정공지 첨부파일 Entity
 public class TopFixedFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

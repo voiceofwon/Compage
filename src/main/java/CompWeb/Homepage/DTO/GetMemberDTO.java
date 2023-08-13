@@ -7,6 +7,8 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+
+//관리자 페이지 회원관리 탭에서 회원 조회를 위한 DTO
 @Data
 @Builder
 @AllArgsConstructor

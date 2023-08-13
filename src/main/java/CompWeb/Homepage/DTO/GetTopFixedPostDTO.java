@@ -6,6 +6,8 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+
+//상단고정 공지 조회를 위한 DTO
 @Getter
 @Setter
 @ToString

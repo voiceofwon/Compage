@@ -3,6 +3,7 @@ package CompWeb.Homepage.DTO;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+//연혁 추가 DTO
 @Getter
 @Setter
 @ToString

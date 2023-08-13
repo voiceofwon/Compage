@@ -7,6 +7,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
+
+//학습자료 게시판 게시글 조회를 위한 DTO
 @Getter
 @Setter
 @ToString

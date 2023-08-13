@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @Table(name ="activity_post")
+//활동내역 게시판 Entity
 public class ActivityPost extends Post{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

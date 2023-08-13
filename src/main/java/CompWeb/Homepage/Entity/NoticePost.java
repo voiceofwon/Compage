@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "notice_post")
+//공지사항 게시글 Entity
 public class NoticePost extends Post{
 
     @Id

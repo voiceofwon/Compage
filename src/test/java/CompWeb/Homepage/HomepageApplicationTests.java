@@ -7,20 +7,22 @@ import CompWeb.Homepage.Entity.Post;
 import CompWeb.Homepage.Repository.MemberRepository;
 import CompWeb.Homepage.Repository.NoticeFileRepository;
 import CompWeb.Homepage.Repository.NoticePostRepository;
-import CompWeb.Homepage.Service.ActivityPostService;
-import CompWeb.Homepage.Service.MemberService;
-import CompWeb.Homepage.Service.NoticePostService;
-import CompWeb.Homepage.Service.SosPostService;
+import CompWeb.Homepage.Service.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
+import org.w3c.dom.ranges.Range;
 
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @SpringBootTest
 class HomepageApplicationTests {
@@ -49,7 +51,11 @@ class HomepageApplicationTests {
 	@Autowired
 	private SosPostService sosPostService;
 
+	@Autowired
+	private RedisTemplate<String,String> redisTemplate;
 
+	@Autowired
+	private VisitorScheduler visitorScheduler;
 
 	@Test
 	@Rollback(value = false)
@@ -119,6 +125,21 @@ class HomepageApplicationTests {
 	void member_Service_sql_test_N1(){
 		memberService.getMemberList();
 		memberService.getMember(3L);
+	}
+
+	@Test
+	@Transactional
+	void Redis_connection_Test(){
+		Set<String> keys = redisTemplate.keys("*");
+
+		ValueOperations<String,String> valueOperations = redisTemplate.opsForValue();
+
+	}
+
+	@Test
+	@Transactional
+	void visitorTest(){
+
 	}
 
 }
