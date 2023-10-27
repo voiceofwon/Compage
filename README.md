@@ -15,6 +15,26 @@
 ### 운영기간
 > 2023.2.29 ~ 운영중
 
+
+
+
+
+
+### 예시 화면
+>Home, Login
+<p>
+<img src="https://github.com/voiceofwon/Compage/assets/104613104/d8bb2d60-750d-4acd-ad3f-5cfb8b9a6aa5" width ="45%"  >
+<img src="https://github.com/voiceofwon/Compage/assets/104613104/da26b9b8-d2b6-4a5a-a9b3-ab256f297d96" width="45%" align="right">
+</p>
+
+>AdminPage
+
+<img src="https://github.com/voiceofwon/Compage/assets/104613104/3e8c23d2-e194-4f31-b9c6-ef772194f7ee" width="400">
+
+>게시판
+
+<img src="https://github.com/voiceofwon/Compage/assets/104613104/f89830dc-bef6-4b84-a73c-64f0b3d6d21c" width="400">
+
 ### :bear: 구현 기능
 
 > * 관리자(동아리 임원진), 사용자(동아리 회원)CRUD + 회원가입 및 로그인 로그아웃
